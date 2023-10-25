@@ -15,7 +15,7 @@ export default async function middleware(req: NextRequest) {
     secret: process.env.NEXTAUTH_SECRET,
   });
 
-  console.log(session)
+ 
 
   if (!session && path.startsWith('/protected')) { //startsWith verifica se a URL se inicia com esse caminho
     return NextResponse.redirect(new URL("/login", req.url));

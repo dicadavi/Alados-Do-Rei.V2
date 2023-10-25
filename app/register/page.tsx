@@ -17,9 +17,9 @@ export default function Login() {
               height={20}
             />
           </Link>
-          <h3 className="text-xl font-semibold">Sign Up</h3>
+          <h3 className="text-xl font-semibold">Cadastrar-se</h3>
           <p className="text-sm text-gray-500">
-            Create an account with your email and password
+           Crie uma conta com seu e-mail e senha
           </p>
         </div>
         <Form type="register" />

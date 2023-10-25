@@ -10,6 +10,10 @@ import { useRouter } from "next/navigation";
 export default function Form({ type }: { type: "login" | "register" }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
     <form
@@ -38,13 +42,15 @@ export default function Form({ type }: { type: "login" | "register" }) {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              email: e.currentTarget.email.value,
-              password: e.currentTarget.password.value,
+              name: name,
+              email: email,
+              password: password,
+              confirmPassword: confirmPassword,
             }),
           }).then(async (res) => {
             setLoading(false);
             if (res.status === 200) {
-              toast.success("Account created! Redirecting to login...");
+              toast.success("Conta criada! Redirecionando para login...");
               setTimeout(() => {
                 router.push("/login");
               }, 2000);
@@ -57,18 +63,38 @@ export default function Form({ type }: { type: "login" | "register" }) {
       }}
       className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16"
     >
+      {type === "register" ?<div>
+        <label
+          htmlFor="name"
+          className="block text-xs text-gray-600 uppercase"
+        >
+          Nome
+        </label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Seu nome"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+        />
+      </div>:''}
       <div>
         <label
           htmlFor="email"
           className="block text-xs text-gray-600 uppercase"
         >
-          Email Address
+          E-mail
         </label>
         <input
           id="email"
           name="email"
           type="email"
-          placeholder="panic@thedis.co"
+          placeholder="exemplo@email.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
           required
           className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
@@ -79,16 +105,35 @@ export default function Form({ type }: { type: "login" | "register" }) {
           htmlFor="password"
           className="block text-xs text-gray-600 uppercase"
         >
-          Password
+          Senha
         </label>
         <input
-          id="password"
-          name="password"
-          type="password"
-          required
+         id="password"
+         name="password"
+         type="password"
+         value={password}
+         onChange={(e) => setPassword(e.target.value)}
+         required
           className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>
+      {type === "register" ?<div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-xs text-gray-600 uppercase"
+        >
+          Confirmar Senha
+        </label>
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+        />
+      </div>:''}
       <button
         disabled={loading}
         className={`${
@@ -100,24 +145,22 @@ export default function Form({ type }: { type: "login" | "register" }) {
         {loading ? (
           <LoadingDots color="#808080" />
         ) : (
-          <p>{type === "login" ? "Sign In" : "Sign Up"}</p>
+          <p>{type === "login" ? "Entrar" : "Cadastrar-se"}</p>
         )}
       </button>
       {type === "login" ? (
         <p className="text-center text-sm text-gray-600">
-          Don&apos;t have an account?{" "}
+          Não tem uma conta?{" "}
           <Link href="/register" className="font-semibold text-gray-800">
-            Sign up
-          </Link>{" "}
-          for free.
+          Inscrever-se
+          </Link>{" "}          
         </p>
       ) : (
         <p className="text-center text-sm text-gray-600">
-          Already have an account?{" "}
+          Já tem uma conta?{" "}
           <Link href="/login" className="font-semibold text-gray-800">
-            Sign in
-          </Link>{" "}
-          instead.
+          Entrar
+          </Link>
         </p>
       )}
     </form>
