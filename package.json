@@ -7,6 +7,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mui/material": "^5.14.15",
     "@prisma/client": "^4.14.0",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
@@ -26,5 +27,23 @@
     "prisma": "^4.14.0",
     "tailwindcss": "^3.0.23",
     "typescript": "^4.6.2"
-  }
+  },
+  "name": "alados-do-rei.v2",
+  "description": "<p align=\"center\">   <a href=\"https://nextjs-postgres-auth.vercel.app/\">     <img src=\"/public/logo.png\" height=\"96\">     <h3 align=\"center\">Next.js Prisma PostgreSQL Auth Starter</h3>   </a> </p>",
+  "version": "1.0.0",
+  "main": "next.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dicadavi/Alados-Do-Rei.V2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dicadavi/Alados-Do-Rei.V2/issues"
+  },
+  "homepage": "https://github.com/dicadavi/Alados-Do-Rei.V2#readme"
 }
