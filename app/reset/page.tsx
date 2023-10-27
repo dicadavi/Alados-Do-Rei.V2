@@ -2,7 +2,7 @@ import Image from "next/image";
 import Form from "@/components/form";
 import Link from "next/link";
 
-export default function register() {
+export default function reset() {
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
       <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl">
@@ -17,12 +17,12 @@ export default function register() {
               height={20}
             />
           </Link>
-          <h3 className="text-xl font-semibold">Cadastrar-se</h3>
+          <h3 className="text-xl font-semibold">Recuperação de senha</h3>
           <p className="text-sm text-gray-500">
-           Crie uma conta com seu usuário e senha
+           Recupere seu usuário e senha
           </p>
         </div>
-        <Form type="register" />
+        <Form type="reset" />
       </div>
     </div>
   );

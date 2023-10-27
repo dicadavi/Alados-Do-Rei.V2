@@ -14,7 +14,7 @@ export default async function Home() {
 <div>
         <ul>
           {users.map((user, index) => (
-            <li key={index}>{user.name}</li>
+            <li key={index}>{user.birth.toDateString()}</li>
           ))}
         </ul>
         

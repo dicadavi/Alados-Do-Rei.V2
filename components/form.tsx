@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export default function Form({ type }: { type: "login" | "register" }) {
+export default function Form({ type }: { type: "login" | "register"|"reset" }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [name, setName] = useState('');
@@ -36,7 +36,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
               router.push("/protected");
             }
           });
-        } else {
+        } else if (type === "register") {
           fetch("/api/auth/register", {
             method: "POST",
             headers: {
@@ -53,6 +53,30 @@ export default function Form({ type }: { type: "login" | "register" }) {
             setLoading(false);
             if (res.status === 200) {
               toast.success("Conta criada! Redirecionando para login...");
+              setTimeout(() => {
+                router.push("/login");
+              }, 2000);
+            } else {
+              const { error } = await res.json();
+              toast.error(error);
+            }
+          });
+        } else if (type === "reset"){
+          fetch("/api/auth/reset", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({    
+              userName: userName,
+              birth: birth,
+              password: password,
+              confirmPassword: confirmPassword,
+            }),
+          }).then(async (res) => {
+            setLoading(false);
+            if (res.status === 200) {
+              toast.success("Senha Atualizada! Redirecionando para login...");
               setTimeout(() => {
                 router.push("/login");
               }, 2000);
@@ -94,7 +118,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           id="userName"
           name="userName"
           type="text"
-          placeholder="Marcelinho10"
+          placeholder={type === 'register' ? 'Marcelinho10' : ''}
           value={userName}
           onChange={(e) => setuserName(e.target.value)}
           autoComplete="userName"
@@ -102,7 +126,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>
-      {type === "register" ?<div>
+      {type === "register" || type ==='reset'?<div>
         <label
           htmlFor="name"
           className="block text-xs text-gray-600 uppercase"
@@ -125,7 +149,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           htmlFor="password"
           className="block text-xs text-gray-600 uppercase"
         >
-          Senha
+          {type ==='reset'?'Nova Senha':'Senha'}
         </label>
         <input
          id="password"
@@ -137,12 +161,12 @@ export default function Form({ type }: { type: "login" | "register" }) {
           className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>
-      {type === "register" ?<div>
+      {type === "register" || type === "reset"?<div>
         <label
           htmlFor="confirmPassword"
           className="block text-xs text-gray-600 uppercase"
         >
-          Confirmar Senha
+          {type ==='reset'?'Confirmar Nova Senha':'Confirmar Senha'}
         </label>
         <input
           id="confirmPassword"
@@ -165,17 +189,31 @@ export default function Form({ type }: { type: "login" | "register" }) {
         {loading ? (
           <LoadingDots color="#808080" />
         ) : (
-          <p>{type === "login" ? "Entrar" : "Cadastrar-se"}</p>
+          <p>{type === "login" ? "Entrar" :type === "register" ? "Cadastrar-se":"Recuperar Senha"}</p>
         )}
       </button>
       {type === "login" ? (
-        <p className="text-center text-sm text-gray-600">
+        <div><p className="text-center text-sm text-gray-600">
           Não tem uma conta?{" "}
           <Link href="/register" className="font-semibold text-gray-800">
           Inscrever-se
           </Link>{" "}          
         </p>
-      ) : (
+         <p className="text-center text-sm text-gray-600">
+         Esqueceu sua senha?{" "}
+          <Link href="/reset" className="font-semibold text-gray-800">
+          Recuperar senha
+          </Link>      
+        </p>  
+        </div>
+      ) : type === "register" ? (
+        <p className="text-center text-sm text-gray-600">
+          Já tem uma conta?{" "}
+          <Link href="/login" className="font-semibold text-gray-800">
+          Entrar
+          </Link>
+        </p>
+      ): (
         <p className="text-center text-sm text-gray-600">
           Já tem uma conta?{" "}
           <Link href="/login" className="font-semibold text-gray-800">
