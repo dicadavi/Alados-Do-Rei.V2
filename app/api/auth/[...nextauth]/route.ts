@@ -7,22 +7,22 @@ export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       credentials: {
-        email: { label: "Email", type: "email" },
+        userName: { label: "userName", type: "text" },
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        const { email, password } = credentials ?? {}
-        if (!email || !password) {
-          throw new Error("Missing username or password");
+        const { userName, password } = credentials ?? {}
+        if (!userName || !password) {
+          throw new Error("Usuário ou senha não cadastrado");
         }
         const user = await prisma.user.findUnique({
           where: {
-            email,
+            userName,
           },
         });
         // if user doesn't exist or password doesn't match
         if (!user || !(await compare(password, user.password))) {
-          throw new Error("Invalid username or password");
+          throw new Error("Nome do usuário ou senha inválido");
         }
         return user;
       },

@@ -11,7 +11,8 @@ export default function Form({ type }: { type: "login" | "register" }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [birth, setbirth] = useState('');
+  const [userName, setuserName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -23,8 +24,8 @@ export default function Form({ type }: { type: "login" | "register" }) {
         if (type === "login") {
           signIn("credentials", {
             redirect: false,
-            email: e.currentTarget.email.value,
-            password: e.currentTarget.password.value,
+            userName: userName,
+            password: password,
             // @ts-ignore
           }).then(({ error }) => {
             if (error) {
@@ -43,7 +44,8 @@ export default function Form({ type }: { type: "login" | "register" }) {
             },
             body: JSON.stringify({
               name: name,
-              email: email,
+              userName: userName,
+              birth: birth,
               password: password,
               confirmPassword: confirmPassword,
             }),
@@ -83,23 +85,41 @@ export default function Form({ type }: { type: "login" | "register" }) {
       </div>:''}
       <div>
         <label
-          htmlFor="email"
+          htmlFor="userName"
           className="block text-xs text-gray-600 uppercase"
         >
-          E-mail
+          Usuário
         </label>
         <input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="exemplo@email.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          autoComplete="email"
+          id="userName"
+          name="userName"
+          type="text"
+          placeholder="Marcelinho10"
+          value={userName}
+          onChange={(e) => setuserName(e.target.value)}
+          autoComplete="userName"
           required
           className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>
+      {type === "register" ?<div>
+        <label
+          htmlFor="name"
+          className="block text-xs text-gray-600 uppercase"
+        >
+          Data De Nascimento
+        </label>
+        <input
+          id="birth"
+          name="birth"
+          type="date"
+          placeholder="25/10/2008"
+          value={birth}
+          onChange={(e) => setbirth(e.target.value)}
+          required
+          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+        />
+      </div>:''}
       <div>
         <label
           htmlFor="password"

@@ -19,7 +19,7 @@ export default function Login() {
           </Link>
           <h3 className="text-xl font-semibold">Cadastrar-se</h3>
           <p className="text-sm text-gray-500">
-           Crie uma conta com seu e-mail e senha
+           Crie uma conta com seu usuário e senha
           </p>
         </div>
         <Form type="register" />

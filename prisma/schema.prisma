@@ -41,12 +41,13 @@ model Session {
 model User {
   id            Int    @id @default(autoincrement())
   name          String?
-  email         String?   @unique
-  emailVerified DateTime?
+  userName      String? @unique
+  birth         DateTime	@db.Date
   image         String?
   password      String
   accounts      Account[]
   sessions      Session[]
+  userRoles     UserRoles[]
 }
 
 model VerificationToken {
@@ -55,4 +56,20 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+
+model Roles {
+  id  Int @id @default(autoincrement())
+  name String @unique
+  isBoard Boolean
+  userRoles     UserRoles[]
+}
+
+
+model UserRoles{
+  userId       Int
+  rolesId      Int @unique  
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  roles        Roles    @relation(fields: [rolesId], references: [id], onDelete: Cascade)
 }
