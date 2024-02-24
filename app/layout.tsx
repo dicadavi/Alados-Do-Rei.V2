@@ -16,17 +16,17 @@ const description =
   "Clube de desbravadores formado por Alados Guerreiros que estão sempre a lutar";
 
 export const metadata: Metadata = {
-  title: "PWA with Next 13",
-  description: "PWA application with Next 13",
+  title: "Alados do Rei",
+  description: "Aplicativo desenvolvido para os desbravadores do clube Alados do Rei",
   generator: "Next.js",
   manifest: "/manifest.json",
   keywords: ["nextjs", "nextjs13", "next13", "pwa", "next-pwa"],
   themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#fff" }],
   authors: [
-    { name: "Rajesh Prajapati" },
+    { name: "Davi Celestino" },
     {
-      name: "Rajesh Prajapati",
-      url: "https://www.linkedin.com/in/raazeshp96/",
+      name: "Davi Celestino",
+      url: "https://github.com/dicadavi",
     },
   ],
   viewport:

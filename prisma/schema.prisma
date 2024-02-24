@@ -46,6 +46,8 @@ model User {
   accounts  Account[]
   sessions  Session[]
   userRoles UserRoles[]
+  unit           Unit?      @relation(fields: [id], references: [id])
+  rankings       Ranking[]
 }
 
 model VerificationToken {
@@ -68,4 +70,29 @@ model UserRoles {
   rolesId Int   @unique
   roles   Roles @relation(fields: [rolesId], references: [id], onDelete: Cascade)
   user    User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Definição do modelo para a tabela units
+// Definição do modelo para a tabela units
+model Unit {
+  id            Int           @id @default(autoincrement())
+  name          String
+  user         User[]
+  unit_rankings UnitRanking[]
+}
+// Definição do modelo para a tabela ranking
+model Ranking {
+  user_id    Int    @id @map("user_id")
+  user       User   @relation(fields: [user_id], references: [id])
+  points     Int
+
+  @@map("ranking")
+}
+// Definição do modelo para a tabela unit_ranking
+model UnitRanking {
+  unit_id    Int    @id @map("unit_id")
+  unit       Unit   @relation(fields: [unit_id], references: [id])
+  points     Int
+
+  @@map("unit_ranking")
 }
