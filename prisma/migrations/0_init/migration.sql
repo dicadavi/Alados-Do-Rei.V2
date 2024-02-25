@@ -34,6 +34,7 @@ CREATE TABLE "User" (
     "password" TEXT NOT NULL,
     "birth" DATE NOT NULL,
     "userName" TEXT NOT NULL,
+    "unitId" INTEGER NOT NULL,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -58,6 +59,30 @@ CREATE TABLE "Roles" (
 CREATE TABLE "UserRoles" (
     "userId" INTEGER NOT NULL,
     "rolesId" INTEGER NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Unit" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+
+    CONSTRAINT "Unit_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ranking" (
+    "userId" INTEGER NOT NULL,
+    "points" INTEGER NOT NULL,
+
+    CONSTRAINT "ranking_pkey" PRIMARY KEY ("userId")
+);
+
+-- CreateTable
+CREATE TABLE "unitRanking" (
+    "unitId" INTEGER NOT NULL,
+    "points" INTEGER NOT NULL,
+
+    CONSTRAINT "unitRanking_pkey" PRIMARY KEY ("unitId")
 );
 
 -- CreateIndex
@@ -88,8 +113,17 @@ ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId"
 ALTER TABLE "Session" ADD CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "User" ADD CONSTRAINT "User_unitId_fkey" FOREIGN KEY ("unitId") REFERENCES "Unit"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "UserRoles" ADD CONSTRAINT "UserRoles_rolesId_fkey" FOREIGN KEY ("rolesId") REFERENCES "Roles"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "UserRoles" ADD CONSTRAINT "UserRoles_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ranking" ADD CONSTRAINT "ranking_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "unitRanking" ADD CONSTRAINT "unitRanking_unitId_fkey" FOREIGN KEY ("unitId") REFERENCES "Unit"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 

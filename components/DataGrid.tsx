@@ -3,35 +3,25 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
-const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 90 },
+const columns: GridColDef[] = [  
   {
-    field: 'firstName',
-    headerName: 'First name',
+    field: 'name',
+    headerName: 'Nome',
     width: 150,
-    editable: true,
+    editable: false,
   },
   {
-    field: 'lastName',
-    headerName: 'Last name',
+    field: 'unitName',
+    headerName: 'Unidade',
     width: 150,
-    editable: true,
+    editable: false,
   },
   {
-    field: 'age',
-    headerName: 'Age',
+    field: 'points',
+    headerName: 'Pontuação',
     type: 'number',
     width: 110,
-    editable: true,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params: GridValueGetterParams) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+    editable: false,
   },
 ];
 
@@ -42,12 +32,16 @@ export default function DataGridDemo({ rows }: { rows: any[] }) {
     <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={rows}
+        getRowId={(row) => row.name}
         columns={columns}
-        initialState={{
+        initialState={{           
           pagination: {
             paginationModel: {
               pageSize: 5,
             },
+          },
+          sorting: {
+            sortModel: [{ field: 'points', sort: 'desc' }],
           },
         }}
         pageSizeOptions={[5]}
