@@ -1,13 +1,32 @@
-import { unstable_getServerSession } from "next-auth/next";
+import { Button } from "@mui/material";
+import { useSession } from "next-auth/react"
 
-export default async function AuthStatus() {
-  const session = await unstable_getServerSession();
+export default function AuthStatus() {
+  const { data: session, status } = useSession()
   return (
-    <div className="absolute top-5 w-full flex justify-center items-center">
-      {session && (
+    <div>
+      {status === "authenticated" ? (
         <p className="text-stone-200 text-sm">
           Conectado como {session.user?.name}
-        </p>
+        </p>) : (
+        <><Button
+          color="primary"
+          variant="text"
+          size="small"
+          component="a"
+          href="/login"
+        >
+          Entrar
+        </Button>
+          <Button
+            color="primary"
+            variant="contained"
+            size="small"
+            component="a"
+            href="/register"
+          >
+            Cadastrar-se
+          </Button></>
       )}
     </div>
   );

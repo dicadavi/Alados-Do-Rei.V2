@@ -1,4 +1,5 @@
-"use client"
+"use client" 
+
 import * as React from 'react';
 import { PaletteMode } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -8,15 +9,15 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
-import AppAppBar from '@/components/AppAppBar';
-import Hero from '@/components/Hero';
-import LogoCollection from '@/components/LogoCollection';
-import Highlights from '@/components/Highlights';
-import Pricing from '@/components/Pricing';
-import Features from '@/components/Features';
-import Testimonials from '@/components/Testimonials';
-import FAQ from '@/components/FAQ';
-import Footer from '@/components/Footer';
+import AppAppBar from './AppAppBar';
+import Hero from './Hero';
+import LogoCollection from './LogoCollection';
+import Highlights from './Highlights';
+import Pricing from './Pricing';
+import Features from './Features';
+import Testimonials from './Testimonials';
+import FAQ from './FAQ';
+import Footer from './Footer';
 import getLPTheme from './getLPTheme';
 
 const defaultTheme = createTheme({});
@@ -81,8 +82,8 @@ export default function LandingPage() {
     <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
       <CssBaseline />
       <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
-      <Hero />
-      <Box sx={{ bgcolor: 'background.default' }}>
+      {/*<Hero />
+       <Box sx={{ bgcolor: 'background.default' }}>
         <LogoCollection />
         <Features />
         <Divider />
@@ -95,7 +96,7 @@ export default function LandingPage() {
         <FAQ />
         <Divider />
         <Footer />
-      </Box>
+      </Box> */}
       <ToggleCustomTheme
         showCustomTheme={showCustomTheme}
         toggleCustomTheme={toggleCustomTheme}

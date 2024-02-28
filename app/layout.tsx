@@ -3,17 +3,15 @@ import "@/styles/globals.css";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-import AuthStatus from "@/components/auth-status";
 import { Suspense } from "react";
+import AuthProvider from "./constext/AuthProvider";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const title = "Alados do Rei";
-const description =
-  "Clube de desbravadores formado por Alados Guerreiros que estão sempre a lutar";
+
 
 export const metadata: Metadata = {
   title: "Alados do Rei",
@@ -45,12 +43,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
-        <Toaster />
-        <Suspense fallback="Loading...">
-          {/* @ts-expect-error Async Server Component */}
-          <AuthStatus />
-        </Suspense>
-        {children}
+        <AuthProvider>
+          <Toaster />
+          <Suspense fallback="Loading...">           
+          </Suspense>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

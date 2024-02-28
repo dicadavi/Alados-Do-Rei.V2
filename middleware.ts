@@ -15,9 +15,11 @@ export default async function middleware(req: NextRequest) {
     secret: process.env.NEXTAUTH_SECRET,
   });
 
- 
-
-  if (!session && path.startsWith('/protected')) { //startsWith verifica se a URL se inicia com esse caminho
+  if (
+    !session &&
+    (path.startsWith("/protected") || path.startsWith("/raking"))
+  ) {
+    //startsWith verifica se a URL se inicia com esse caminho
     return NextResponse.redirect(new URL("/login", req.url));
   } else if (session && (path === "/login" || path === "/register")) {
     return NextResponse.redirect(new URL("/protected", req.url));
