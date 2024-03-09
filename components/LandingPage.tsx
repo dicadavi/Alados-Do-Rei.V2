@@ -1,4 +1,4 @@
-"use client" 
+"use client"
 
 import * as React from 'react';
 import { PaletteMode } from '@mui/material';
@@ -19,6 +19,7 @@ import Testimonials from './Testimonials';
 import FAQ from './FAQ';
 import Footer from './Footer';
 import getLPTheme from './getLPTheme';
+import { Container, Stack, Typography } from "@mui/material";
 
 const defaultTheme = createTheme({});
 
@@ -82,6 +83,30 @@ export default function LandingPage() {
     <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
       <CssBaseline />
       <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
+      <Box
+        id="hero"
+        sx={{
+          width: "100%",
+          backgroundImage:
+            LPtheme.palette.mode === 'light'
+              ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
+              : 'linear-gradient(#02294F, #090E10)',
+          backgroundSize: "100% 80%",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <Container
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            pt: { xs: 14, sm: 20 },
+            pb: { xs: 8, sm: 12 },
+          }}
+        >
+
+        </Container>
+      </Box>
       {/*<Hero />
        <Box sx={{ bgcolor: 'background.default' }}>
         <LogoCollection />

@@ -1,40 +1,46 @@
-"use client";
+"use client"
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 
-const columns: GridColDef[] = [  
-  {
-    field: 'name',
-    headerName: 'Nome',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'unitName',
-    headerName: 'Unidade',
-    width: 150,
-    editable: false,
-  },
-  {
-    field: 'points',
-    headerName: 'Pontuação',
-    type: 'number',
-    width: 110,
-    editable: false,
-  },
-];
+interface Row {
+  name: string;
+  unitName?: string;
+  points: number;
+}
+
+interface Column {
+  field: string;
+  headerName?: string;
+  width?: number;
+  editable?: boolean;
+}
 
 
 
-export default function DataGridDemo({ rows }: { rows: any[] }) {
+interface AntDesignGridProps {
+  rows: Row[];
+  columns: Column[];
+}
+
+export default function DataGridDemo({ rows, columns }: AntDesignGridProps) {
+
+
   return (
-    <Box sx={{ height: 400, width: '100%' }}>
+    <Box sx={{ height: 400, width: '50%', alignItems: 'center' }}>
       <DataGrid
+        sx={(theme) => ({
+          backgroundImage:
+            theme.palette.mode === 'light'
+              ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
+              : 'linear-gradient(#02294F, #090E10)',
+          backgroundSize: '100% 100%',
+          backgroundRepeat: 'no-repeat',
+        })}
         rows={rows}
         getRowId={(row) => row.name}
         columns={columns}
-        initialState={{           
+        initialState={{
           pagination: {
             paginationModel: {
               pageSize: 5,
