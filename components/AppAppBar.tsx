@@ -88,7 +88,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                 style={logoStyle}
                 width={800}
                 height={500}
-                alt="logo of sitemark"
+                alt="logo of Alados do Rei"
               />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <MenuItem
@@ -125,7 +125,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
               }}
             >
               <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-              <AuthStatus/>
+              <AuthStatus />
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
               <Button

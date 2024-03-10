@@ -20,8 +20,8 @@ import FAQ from './FAQ';
 import Footer from './Footer';
 import getLPTheme from './getLPTheme';
 import { Container, Stack, Typography } from "@mui/material";
+import { ModeContext } from '../app/context/ModeProvider';
 
-const defaultTheme = createTheme({});
 
 interface ToggleCustomThemeProps {
   showCustomTheme: Boolean;
@@ -67,20 +67,20 @@ function ToggleCustomTheme({
 }
 
 export default function LandingPage() {
-  const [mode, setMode] = React.useState<PaletteMode>('dark');
+  const { mode, toggleColorMode } = React.useContext(ModeContext);
+  // const [mode, setMode] = React.useState<PaletteMode>('dark');
   const [showCustomTheme, setShowCustomTheme] = React.useState(true);
   const LPtheme = createTheme(getLPTheme(mode));
-
-  const toggleColorMode = () => {
-    setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
+  // const toggleColorMode = () => {
+  //   setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  // };
 
   const toggleCustomTheme = () => {
     setShowCustomTheme((prev) => !prev);
   };
 
   return (
-    <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
+    <ThemeProvider theme={LPtheme}>
       <CssBaseline />
       <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
       <Box

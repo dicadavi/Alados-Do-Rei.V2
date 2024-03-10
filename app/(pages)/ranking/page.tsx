@@ -4,6 +4,8 @@ import { Box, Paper, Container, Grid, Stack, ThemeProvider, Typography } from "@
 import { PrismaClient } from "@prisma/client";
 import { GridColDef } from "@mui/x-data-grid";
 import RankingUser from "@/components/Ranking";
+
+
 const prisma = new PrismaClient();
 
 export default async function Ranking() {
