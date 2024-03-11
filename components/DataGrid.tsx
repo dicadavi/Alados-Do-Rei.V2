@@ -2,6 +2,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
+import { Typography } from '@mui/material';
 
 interface Row {
   name: string;
@@ -27,16 +28,11 @@ export default function DataGridDemo({ rows, columns }: AntDesignGridProps) {
 
 
   return (
-    <Box sx={{ height: 400, width: '50%', alignItems: 'center' }}>
+    <Box sx={{ width: '100%', alignItems: 'center' }}>
+      <Typography variant="h6" gutterBottom>
+        Ranking
+      </Typography>
       <DataGrid
-        sx={(theme) => ({
-          backgroundImage:
-            theme.palette.mode === 'light'
-              ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
-              : 'linear-gradient(#02294F, #090E10)',
-          backgroundSize: '100% 100%',
-          backgroundRepeat: 'no-repeat',
-        })}
         rows={rows}
         getRowId={(row) => row.name}
         columns={columns}

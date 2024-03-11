@@ -1,7 +1,7 @@
 "use client"
 import React, { Component } from "react";
 import DataGridDemo from "@/components/DataGrid";
-import { Box, Grid } from "@mui/material";
+import { Box, Card, Container, Grid } from "@mui/material";
 import getLPTheme from "./getLPTheme";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { ModeContext } from "../app/context/ModeProvider";
@@ -34,11 +34,23 @@ class RankingUser extends Component<AntDesignGridProps> {
         const LPtheme = createTheme(getLPTheme(mode));
         return (
             <ThemeProvider theme={LPtheme}>
-                <Box sx={{ flexGrow: 1 }}>
-                    <Grid xs={6} md={8}>
-                        <DataGridDemo rows={rows} columns={columns} />
-                    </Grid>
-                </Box>
+                <Container
+                    id="Ranking"
+                    sx={{
+                        pt: { xs: 4, sm: 12 },
+                        pb: { xs: 8, sm: 16 },
+                        position: 'relative',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: { xs: 3, sm: 6 },
+                    }}
+                >
+
+                    <DataGridDemo rows={rows} columns={columns} />
+
+
+                </Container>
             </ThemeProvider>
         );
     }

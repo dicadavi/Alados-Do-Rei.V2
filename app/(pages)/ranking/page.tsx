@@ -1,6 +1,4 @@
 import * as React from "react";
-import DataGridDemo from "@/components/DataGrid";
-import { Box, Paper, Container, Grid, Stack, ThemeProvider, Typography } from "@mui/material";
 import { PrismaClient } from "@prisma/client";
 import { GridColDef } from "@mui/x-data-grid";
 import RankingUser from "@/components/Ranking";
@@ -60,6 +58,5 @@ export default async function Ranking() {
 
   return (
     <RankingUser rows={rows} columns={columns} />
-
   );
 }
