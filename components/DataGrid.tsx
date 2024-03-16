@@ -20,17 +20,18 @@ interface Column {
 
 
 interface AntDesignGridProps {
+  title: string,
   rows: Row[];
   columns: Column[];
 }
 
-export default function DataGridDemo({ rows, columns }: AntDesignGridProps) {
+export default function DataGridDemo({ title, rows, columns }: AntDesignGridProps) {
 
 
   return (
     <Box sx={{ width: '100%', alignItems: 'center' }}>
       <Typography variant="h6" gutterBottom>
-        Ranking
+        {title}
       </Typography>
       <DataGrid
         rows={rows}

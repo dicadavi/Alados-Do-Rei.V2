@@ -108,9 +108,9 @@ export default function LandingPage() {
         </Container>
       </Box>
       <Divider />
-      <Testimonials />
+      {/*<Testimonials />
       <Divider />
-      {/*<Hero />
+      <Hero />
        <Box sx={{ bgcolor: 'background.default' }}>
         <LogoCollection />
         <Features />

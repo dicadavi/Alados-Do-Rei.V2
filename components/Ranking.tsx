@@ -36,20 +36,21 @@ class RankingUser extends Component<AntDesignGridProps> {
             <ThemeProvider theme={LPtheme}>
                 <Container
                     id="Ranking"
-                    sx={{
+                    sx={(theme) => ({
                         pt: { xs: 4, sm: 12 },
-                        pb: { xs: 8, sm: 16 },
+                        pb: { xs: 8, sm: 10 },
                         position: 'relative',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         gap: { xs: 3, sm: 6 },
-                    }}
+                        backgroundColor: theme.palette.mode === 'light' ? '#fafbfe' : '#090e10',
+                        borderRadius: '13px',
+                        border: '2px solid',
+                        borderColor: theme.palette.mode === 'light' ? '#d7eafd' : '#090e10'
+                    })}
                 >
-
-                    <DataGridDemo rows={rows} columns={columns} />
-
-
+                    <DataGridDemo title='Ranking de Unidade' rows={rows} columns={columns} />
                 </Container>
             </ThemeProvider>
         );

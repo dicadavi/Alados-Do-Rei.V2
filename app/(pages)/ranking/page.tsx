@@ -2,6 +2,7 @@ import * as React from "react";
 import { PrismaClient } from "@prisma/client";
 import { GridColDef } from "@mui/x-data-grid";
 import RankingUser from "@/components/Ranking";
+import PageDefault from "@/components/PageDefault";
 
 
 const prisma = new PrismaClient();
@@ -57,6 +58,9 @@ export default async function Ranking() {
   ];
 
   return (
-    <RankingUser rows={rows} columns={columns} />
+    <PageDefault>
+      <RankingUser rows={rows} columns={columns} />
+    </PageDefault>
+
   );
 }
