@@ -42,7 +42,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="ptBR">
       <body className={inter.variable}>
         <AuthProvider>
           <ModeProvider>

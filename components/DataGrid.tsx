@@ -1,8 +1,9 @@
 "use client"
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { Typography } from '@mui/material';
+
 
 interface Row {
   name: string;
@@ -46,10 +47,25 @@ export default function DataGridDemo({ title, rows, columns }: AntDesignGridProp
           sorting: {
             sortModel: [{ field: 'points', sort: 'desc' }],
           },
+          filter: {
+            filterModel: {
+              items: [],
+              quickFilterValues: [],
+            },
+          },
         }}
         pageSizeOptions={[5]}
         checkboxSelection
         disableRowSelectionOnClick
+        disableColumnFilter
+        disableColumnSelector
+        disableDensitySelector
+        slots={{ toolbar: GridToolbar }}
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+          },
+        }}
       />
     </Box>
   );

@@ -21,6 +21,8 @@ import Footer from './Footer';
 import getLPTheme from './getLPTheme';
 import { Container, Stack, Typography } from "@mui/material";
 import { ModeContext } from '../app/context/ModeProvider';
+import { ptBR as corePtBR } from '@mui/material/locale';
+import { ptBR } from '@mui/x-data-grid/locales';
 
 
 interface ToggleCustomThemeProps {
@@ -70,7 +72,7 @@ export default function LandingPage() {
   const { mode, toggleColorMode } = React.useContext(ModeContext);
   // const [mode, setMode] = React.useState<PaletteMode>('dark');
   const [showCustomTheme, setShowCustomTheme] = React.useState(true);
-  const LPtheme = createTheme(getLPTheme(mode));
+  const LPtheme = createTheme(getLPTheme(mode), ptBR, corePtBR);
   // const toggleColorMode = () => {
   //   setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
   // };

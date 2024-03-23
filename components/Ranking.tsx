@@ -5,6 +5,9 @@ import { Box, Card, Container, Grid } from "@mui/material";
 import getLPTheme from "./getLPTheme";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { ModeContext } from "../app/context/ModeProvider";
+import { ptBR as corePtBR } from '@mui/material/locale';
+import { ptBR } from '@mui/x-data-grid/locales';
+
 
 interface Row {
     name: string;
@@ -31,7 +34,10 @@ class RankingUser extends Component<AntDesignGridProps> {
     render() {
         const { rows, columns } = this.props;
         const { mode } = this.context;
-        const LPtheme = createTheme(getLPTheme(mode));
+        const LPtheme = createTheme(getLPTheme(mode),
+            ptBR,
+            corePtBR
+        );
         return (
             <ThemeProvider theme={LPtheme}>
                 <Container

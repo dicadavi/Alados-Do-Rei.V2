@@ -4,7 +4,8 @@ import getLPTheme from "./getLPTheme";
 import { createTheme } from "@mui/material/styles";
 import { ModeContext } from "../app/context/ModeProvider";
 import React from "react";
-
+import { ptBR as corePtBR } from '@mui/material/locale';
+import { ptBR } from '@mui/x-data-grid/locales';
 
 export default function PageDefault({ children,
 }: {
@@ -12,7 +13,7 @@ export default function PageDefault({ children,
 }) {
     const { mode } = React.useContext(ModeContext);
 
-    const LPtheme = createTheme(getLPTheme(mode));
+    const LPtheme = createTheme(getLPTheme(mode), ptBR, corePtBR);
     return (
 
         <CardContent
