@@ -1,12 +1,12 @@
 "use client"
 import React, { Component } from "react";
-import DataGridDemo from "@/components/DataGrid";
-import { Box, Card, Container, Grid } from "@mui/material";
+import { Container } from "@mui/material";
 import getLPTheme from "./getLPTheme";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { ModeContext } from "../app/context/ModeProvider";
 import { ptBR as corePtBR } from '@mui/material/locale';
 import { ptBR } from '@mui/x-data-grid/locales';
+import DataGridFetch from "./DataGridFetch";
 
 
 interface Row {
@@ -27,12 +27,21 @@ interface AntDesignGridProps {
     columns: Column[];
 }
 
-class RankingUser extends Component<AntDesignGridProps> {
-    static contextType = ModeContext;
-    context!: React.ContextType<typeof ModeContext>;
+const handleRefresh = async () => {
+    // Simula um tempo de carregamento
+    console.log('Dados atualizados!');
+  };
 
-    render() {
-        const { rows, columns } = this.props;
+  
+  class RankingUser extends Component<AntDesignGridProps> {
+      static contextType = ModeContext;
+      context!: React.ContextType<typeof ModeContext>;
+      
+      render() {
+          const { rows, columns } = this.props;
+          const fetchRows = async () => {
+        return rows
+          }
         const { mode } = this.context;
         const LPtheme = createTheme(getLPTheme(mode),
             ptBR,
@@ -56,7 +65,18 @@ class RankingUser extends Component<AntDesignGridProps> {
                         borderColor: theme.palette.mode === 'light' ? '#d7eafd' : '#090e10'
                     })}
                 >
-                    <DataGridDemo title='Ranking de Unidade' rows={rows} columns={columns} />
+                    <DataGridFetch
+                        title='Ranking de Unidade'
+                        columns={columns}
+                        rows={() => fetchRows()}
+                       // heightBox={250}
+                        widthBox={'100%'}
+                        enableFilter={true} // Habilitar campo de pesquisa
+                        enableSelection={true} // Habilitar seleção de linhas
+                        enableRefreshButton={true} // Habilitar botão de atualização
+                        onRefresh={handleRefresh} // Função executada ao clicar no botão de atualização
+                        filterableColumns={['unitName', 'name']}
+                    />
                 </Container>
             </ThemeProvider>
         );
