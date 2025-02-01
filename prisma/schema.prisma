@@ -97,3 +97,14 @@ model UnitRanking {
 
   @@map("unitRanking")
 }
+
+model Checklist {
+  id           Int     @id @default(autoincrement())
+  userName     String
+  uniforme     Boolean
+  biblia       Boolean
+  presenca     Boolean
+  pontualidade Boolean
+  material     Boolean
+  createdAt    DateTime @default(now())
+}

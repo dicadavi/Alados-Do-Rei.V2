@@ -83,7 +83,7 @@ export default function LandingPage() {
   return (
     <ThemeProvider theme={LPtheme}>
       <CssBaseline />
-      <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
+      {/* <AppAppBar mode={mode} toggleColorMode={toggleColorMode} /> */}
       <Box
         id="hero"
         sx={{
@@ -96,7 +96,7 @@ export default function LandingPage() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <Container
+        {/* <Container
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -104,7 +104,7 @@ export default function LandingPage() {
             pt: { xs: 14, sm: 20 },
             pb: { xs: 8, sm: 12 },
           }}
-        ></Container>
+        ></Container> */}
       </Box>
       <Divider />
       {/*<Testimonials />

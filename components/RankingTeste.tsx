@@ -185,7 +185,7 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                 />
 
                 <Typography
-                  variant="h6"
+                  variant="body1"
                   sx={{
                     color: "#fff",
                     fontWeight: "bold",

@@ -34,7 +34,7 @@ CREATE TABLE "User" (
     "password" TEXT NOT NULL,
     "birth" DATE NOT NULL,
     "userName" TEXT NOT NULL,
-    "unitId" INTEGER NOT NULL,
+    "unitId" INTEGER,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -85,6 +85,20 @@ CREATE TABLE "unitRanking" (
     CONSTRAINT "unitRanking_pkey" PRIMARY KEY ("unitId")
 );
 
+-- CreateTable
+CREATE TABLE "Checklist" (
+    "id" SERIAL NOT NULL,
+    "userName" TEXT NOT NULL,
+    "uniforme" BOOLEAN NOT NULL,
+    "biblia" BOOLEAN NOT NULL,
+    "presenca" BOOLEAN NOT NULL,
+    "pontualidade" BOOLEAN NOT NULL,
+    "material" BOOLEAN NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Checklist_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Account_provider_providerAccountId_key" ON "Account"("provider", "providerAccountId");
 
@@ -104,7 +118,7 @@ CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationTok
 CREATE UNIQUE INDEX "Roles_name_key" ON "Roles"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "UserRoles_rolesId_key" ON "UserRoles"("rolesId");
+CREATE UNIQUE INDEX "UserRoles_userId_key" ON "UserRoles"("userId");
 
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -113,7 +127,7 @@ ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId"
 ALTER TABLE "Session" ADD CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "User" ADD CONSTRAINT "User_unitId_fkey" FOREIGN KEY ("unitId") REFERENCES "Unit"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "User" ADD CONSTRAINT "User_unitId_fkey" FOREIGN KEY ("unitId") REFERENCES "Unit"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "UserRoles" ADD CONSTRAINT "UserRoles_rolesId_fkey" FOREIGN KEY ("rolesId") REFERENCES "Roles"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -126,4 +140,3 @@ ALTER TABLE "ranking" ADD CONSTRAINT "ranking_userId_fkey" FOREIGN KEY ("userId"
 
 -- AddForeignKey
 ALTER TABLE "unitRanking" ADD CONSTRAINT "unitRanking_unitId_fkey" FOREIGN KEY ("unitId") REFERENCES "Unit"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-

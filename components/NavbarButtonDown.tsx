@@ -24,7 +24,11 @@ const NavbarButtonDown = () => {
     { icon: <QuestionAnswerOutlined />, label: "Messages", route: "/ranking" },
     { icon: <HomeOutlined />, label: "Home", route: "/ranking" },
     { icon: <CameraAltOutlined />, label: "Photos", route: "/ranking" },
-    { icon: <SettingsOutlined />, label: "Settings", route: "/ranking" },
+    {
+      icon: <SettingsOutlined />,
+      label: "Settings",
+      route: "/protected/points",
+    },
   ];
 
   // Posições personalizadas do círculo vermelho para cada ícone
@@ -59,7 +63,7 @@ const NavbarButtonDown = () => {
           height: "3.9rem",
           backgroundColor: theme.palette.primary.dark,
           borderRadius: "50%",
-          border: `6px solid ${theme.palette.background.default}`, // Borda grossa com a cor de fundo
+          border: `6px solid #090e10`, // Borda grossa com a cor de fundo
           transition: "left 0.3s ease, top 0.3s ease",
         }}
       />
