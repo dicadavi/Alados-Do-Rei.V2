@@ -1,29 +1,28 @@
-"use client"
+"use client";
 
-import * as React from 'react';
-import { PaletteMode } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
-import AppAppBar from './AppAppBar';
-import Hero from './Hero';
-import LogoCollection from './LogoCollection';
-import Highlights from './Highlights';
-import Pricing from './Pricing';
-import Features from './Features';
-import Testimonials from './Testimonials';
-import FAQ from './FAQ';
-import Footer from './Footer';
-import getLPTheme from './getLPTheme';
+import * as React from "react";
+import { PaletteMode } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
+import AppAppBar from "./AppAppBar";
+import Hero from "./Hero";
+import LogoCollection from "./LogoCollection";
+import Highlights from "./Highlights";
+import Pricing from "./Pricing";
+import Features from "./Features";
+import Testimonials from "./Testimonials";
+import FAQ from "./FAQ";
+import Footer from "./Footer";
+import getLPTheme from "./getLPTheme";
 import { Container, Stack, Typography } from "@mui/material";
-import { ModeContext } from '../app/context/ModeProvider';
-import { ptBR as corePtBR } from '@mui/material/locale';
-import { ptBR } from '@mui/x-data-grid/locales';
-
+import { ModeContext } from "../app/context/ModeProvider";
+import { ptBR as corePtBR } from "@mui/material/locale";
+import { ptBR } from "@mui/x-data-grid/locales";
 
 interface ToggleCustomThemeProps {
   showCustomTheme: Boolean;
@@ -37,11 +36,11 @@ function ToggleCustomTheme({
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '100dvw',
-        position: 'fixed',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100dvw",
+        position: "fixed",
         bottom: 24,
       }}
     >
@@ -52,14 +51,14 @@ function ToggleCustomTheme({
         onChange={toggleCustomTheme}
         aria-label="Platform"
         sx={{
-          backgroundColor: 'background.default',
-          '& .Mui-selected': {
-            pointerEvents: 'none',
+          backgroundColor: "background.default",
+          "& .Mui-selected": {
+            pointerEvents: "none",
           },
         }}
       >
         <ToggleButton value>
-          <AutoAwesomeRoundedIcon sx={{ fontSize: '20px', mr: 1 }} />
+          <AutoAwesomeRoundedIcon sx={{ fontSize: "20px", mr: 1 }} />
           Custom theme
         </ToggleButton>
         <ToggleButton value={false}>Material Design 2</ToggleButton>
@@ -90,9 +89,9 @@ export default function LandingPage() {
         sx={{
           width: "100%",
           backgroundImage:
-            LPtheme.palette.mode === 'light'
-              ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
-              : 'linear-gradient(#02294F, #090E10)',
+            LPtheme.palette.mode === "light"
+              ? "linear-gradient(180deg, #CEE5FD, #FFF)"
+              : "linear-gradient(#02294F, #090E10)",
           backgroundSize: "100% 80%",
           backgroundRepeat: "no-repeat",
         }}
@@ -105,9 +104,7 @@ export default function LandingPage() {
             pt: { xs: 14, sm: 20 },
             pb: { xs: 8, sm: 12 },
           }}
-        >
-
-        </Container>
+        ></Container>
       </Box>
       <Divider />
       {/*<Testimonials />
@@ -127,10 +124,10 @@ export default function LandingPage() {
         <Divider />
         <Footer />
       </Box> */}
-      <ToggleCustomTheme
+      {/* <ToggleCustomTheme
         showCustomTheme={showCustomTheme}
         toggleCustomTheme={toggleCustomTheme}
-      />
+      /> */}
     </ThemeProvider>
   );
 }

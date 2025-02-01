@@ -6,17 +6,17 @@ import { Toaster } from "react-hot-toast";
 import { Suspense } from "react";
 import AuthProvider from "./context/AuthProvider";
 import { ModeProvider } from "./context/ModeProvider";
+import NavbarButtonDown from "@/components/NavbarButtonDown";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
 
-
-
 export const metadata: Metadata = {
   title: "Alados do Rei",
-  description: "Aplicativo desenvolvido para os desbravadores do clube Alados do Rei",
+  description:
+    "Aplicativo desenvolvido para os desbravadores do clube Alados do Rei",
   generator: "Next.js",
   manifest: "/manifest.json",
   keywords: ["nextjs", "nextjs13", "next13", "pwa", "next-pwa"],
@@ -47,9 +47,9 @@ export default async function RootLayout({
         <AuthProvider>
           <ModeProvider>
             <Toaster />
-            <Suspense fallback="Loading...">
-            </Suspense>
+            <Suspense fallback="Loading..."></Suspense>
             {children}
+            <NavbarButtonDown />
           </ModeProvider>
         </AuthProvider>
       </body>
