@@ -1,3 +1,7 @@
+"use client";
+
+import React from "react";
+import Image from "next/image"; // Importando o componente otimizado do Next.js
 import {
   Box,
   Typography,
@@ -7,6 +11,7 @@ import {
   ListItemText,
   ListItemAvatar,
   Chip,
+  useTheme,
 } from "@mui/material";
 
 interface RankingItem {
@@ -17,6 +22,8 @@ interface RankingItem {
 }
 
 export default function RankingTeste({ items }: { items: RankingItem[] }) {
+  const theme = useTheme();
+
   // Funções auxiliares
   const getMedalImage = (position: number) =>
     ({
@@ -29,8 +36,8 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
 
   const getAvatarColor = (initial: string) => {
     const charCode = initial.charCodeAt(0);
-    const hue = (charCode * 137) % 360; // Gera matiz única baseada no caractere
-    return `hsl(${hue}, 70%, 40%)`; // Retorna cor HSL
+    const hue = (charCode * 137) % 360;
+    return `hsl(${hue}, 70%, 50%)`;
   };
 
   return (
@@ -39,7 +46,15 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
         maxWidth: 600,
         margin: "auto",
         p: 2,
-        backgroundColor: "transparent",
+        backgroundColor: theme.palette.background.paper,
+        borderRadius: 2,
+        boxShadow: theme.shadows[2],
+        transition: "background-color 0.3s ease, color 0.3s ease",
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: "calc(100vh - 8rem)", // Limitar altura para não ultrapassar a tela
+        overflowY: "auto",
+        paddingBottom: "6rem", // Espaço extra para evitar que o navbar cubra o conteúdo
       }}
     >
       <Typography
@@ -49,7 +64,7 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
           fontWeight: "bold",
           textAlign: "center",
           mb: 4,
-          color: "#fff",
+          color: theme.palette.text.primary,
         }}
       >
         🏆 Ranking de Pontuação
@@ -64,10 +79,13 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                 display: "flex",
                 alignItems: "center",
                 paddingLeft: 0,
-                backgroundColor: "transparent",
+                backgroundColor: theme.palette.background.default,
+                borderRadius: 2,
+                boxShadow: theme.shadows[1],
+                transition: "background-color 0.3s ease",
               }}
             >
-              {/* Container Medalha/Posição */}
+              {/* Medalha/Posição com <Image> otimizado */}
               <ListItemAvatar
                 sx={{
                   minWidth: "80px",
@@ -77,12 +95,12 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                 }}
               >
                 {item.rank <= 3 ? (
-                  <img
-                    src={getMedalImage(item.rank)}
+                  <Image
+                    src={getMedalImage(item.rank)!}
                     alt={`Medalha ${item.rank}`}
+                    width={50}
+                    height={50}
                     style={{
-                      width: "50px",
-                      height: "50px",
                       objectFit: "contain",
                     }}
                   />
@@ -99,10 +117,8 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                       fontSize: "1.2rem",
                       color:
                         item.rank >= 4 && item.rank <= 10
-                          ? "rgb(2, 41, 200)"
-                          : "#fff",
-                      textShadow:
-                        item.rank > 10 ? "0 0 2px rgba(0,0,0,0.5)" : "none",
+                          ? theme.palette.primary.main
+                          : theme.palette.text.primary,
                     }}
                   >
                     {item.rank}
@@ -116,11 +132,13 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                   sx={{
                     width: 50,
                     height: 50,
-                    boxShadow: 2,
-                    border: "2px solid rgba(255,255,255,0.1)",
+                    boxShadow: theme.shadows[3],
+                    border: `2px solid ${theme.palette.divider}`,
                     backgroundColor: getAvatarColor(getInitial(item.name)),
                     fontSize: "1.5rem",
-                    color: "#fff",
+                    color: theme.palette.getContrastText(
+                      getAvatarColor(getInitial(item.name))
+                    ),
                     textShadow: "0 1px 2px rgba(0,0,0,0.3)",
                   }}
                 >
@@ -144,7 +162,7 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                       variant="body1"
                       sx={{
                         fontWeight: 600,
-                        color: "#fff",
+                        color: theme.palette.text.primary,
                       }}
                     >
                       {item.name}
@@ -155,9 +173,10 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                       sx={{
                         fontWeight: "bold",
                         minWidth: 100,
-                        backgroundColor: "transparent",
-                        color: "#fff",
-                        border: "transparent",
+                        backgroundColor: theme.palette.primary.light,
+                        color: theme.palette.primary.contrastText,
+                        border: `1px solid ${theme.palette.primary.dark}`,
+                        boxShadow: theme.shadows[1],
                       }}
                     />
                   </Box>
@@ -165,7 +184,7 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
               />
             </ListItem>
 
-            {/* Zona de Conduta */}
+            {/* Zona de Conduta com <Image> otimizado */}
             {index === 9 && (
               <Box
                 sx={{
@@ -174,20 +193,23 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                   justifyContent: "center",
                   my: 3,
                   py: 2,
-                  backgroundColor: "transparent",
+                  backgroundColor: theme.palette.secondary.light,
                   borderRadius: 2,
+                  boxShadow: theme.shadows[2],
                 }}
               >
-                <img
+                <Image
                   src="/conduta.png"
                   alt="Ícone de Conduta"
-                  style={{ width: 40, height: 40, marginRight: 16 }}
+                  width={40}
+                  height={40}
+                  style={{ marginRight: 16 }}
                 />
 
                 <Typography
                   variant="body1"
                   sx={{
-                    color: "#fff",
+                    color: theme.palette.secondary.contrastText,
                     fontWeight: "bold",
                     textTransform: "uppercase",
                   }}
@@ -195,10 +217,12 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                   Zona de Conduta
                 </Typography>
 
-                <img
+                <Image
                   src="/conduta.png"
                   alt="Ícone de Conduta"
-                  style={{ width: 40, height: 40, marginLeft: 16 }}
+                  width={40}
+                  height={40}
+                  style={{ marginLeft: 16 }}
                 />
               </Box>
             )}

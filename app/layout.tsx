@@ -1,4 +1,3 @@
-// These styles apply to every route in the application
 import "@/styles/globals.css";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -6,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { Suspense } from "react";
 import AuthProvider from "./context/AuthProvider";
 import { ModeProvider } from "./context/ModeProvider";
-import NavbarButtonDown from "@/components/NavbarButtonDown";
+import NavbarButtonDown from "@/components/layout/NavbarButtonDown";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -36,18 +35,18 @@ export const metadata: Metadata = {
   ],
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ptBR">
+    <html lang="pt-BR">
       <body className={inter.variable}>
         <AuthProvider>
           <ModeProvider>
             <Toaster />
-            <Suspense fallback="Loading..."></Suspense>
+            <Suspense fallback="Loading..." />
             {children}
             <NavbarButtonDown />
           </ModeProvider>

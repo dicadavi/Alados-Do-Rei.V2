@@ -13,16 +13,14 @@ import { useTheme } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
 
 const NavbarButtonDown = () => {
-  const theme = useTheme(); // Hook para acessar o tema
-  const router = useRouter(); // Hook para navegação
-  // Estado para controlar o ícone ativo
+  const theme = useTheme();
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(2);
 
-  // Lista de ícones com suas respectivas rotas
   const icons = [
     { icon: <PersonOutlined />, label: "Profile", route: "/ranking" },
     { icon: <QuestionAnswerOutlined />, label: "Messages", route: "/ranking" },
-    { icon: <HomeOutlined />, label: "Home", route: "/ranking" },
+    { icon: <HomeOutlined />, label: "Home", route: "/home" },
     { icon: <CameraAltOutlined />, label: "Photos", route: "/ranking" },
     {
       icon: <SettingsOutlined />,
@@ -31,8 +29,7 @@ const NavbarButtonDown = () => {
     },
   ];
 
-  // Posições personalizadas do círculo vermelho para cada ícone
-  const positions = ["10%", "30%", "50%", "70%", "89%"];
+  const positions = ["10%", "31%", "50%", "70%", "89%"];
 
   return (
     <Box
@@ -41,34 +38,44 @@ const NavbarButtonDown = () => {
         bottom: 0,
         left: 0,
         right: 0,
-        display: { xs: "flex", sm: "none" }, // Apenas em telas pequenas
+        display: { xs: "flex", sm: "none" },
         justifyContent: "space-around",
         alignItems: "center",
-        backgroundColor: theme.palette.primary.dark,
+        backgroundColor: theme.palette.background.default,
         borderTopLeftRadius: "0.75rem",
         borderTopRightRadius: "0.75rem",
         height: "4rem",
-        boxShadow: "0 -2px 10px rgba(0, 0, 0, 0.19)",
+        boxShadow:
+          theme.palette.mode === "dark"
+            ? "0 -2px 10px rgba(0, 0, 0, 0.7)"
+            : "0 -2px 10px rgba(0, 0, 0, 0.1)",
         zIndex: 1000,
       }}
     >
-      {/* Círculo personalizado */}
+      {/* Círculo personalizado que muda conforme o tema */}
       <Box
         sx={{
           position: "absolute",
-          top: "-2.1rem", // Ajuste de altura
-          left: positions[activeIndex], // Posição personalizada
+          top: "-2.1rem",
+          left: positions[activeIndex],
           transform: "translateX(-50%)",
-          width: "3.9rem", // Tamanho aumentado
+          width: "3.9rem",
           height: "3.9rem",
-          backgroundColor: theme.palette.primary.dark,
+          background:
+            theme.palette.mode === "dark"
+              ? `linear-gradient(to bottom, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`
+              : `linear-gradient(to bottom, ${theme.palette.primary.dark}, ${theme.palette.primary.light})`,
           borderRadius: "50%",
-          border: `6px solid #090e10`, // Borda grossa com a cor de fundo
-          transition: "left 0.3s ease, top 0.3s ease",
+          border: `6px solid ${
+            theme.palette.mode === "dark"
+              ? theme.palette.background.default
+              : theme.palette.grey[100]
+          }`,
+          transition: "left 0.3s ease, background-color 0.3s ease",
         }}
       />
 
-      {/* Ícones do menu */}
+      {/* Ícones do menu que mudam de cor conforme o tema */}
       {icons.map((item, index) => (
         <Box
           key={index}
@@ -86,12 +93,12 @@ const NavbarButtonDown = () => {
             sx={{
               color:
                 activeIndex === index
-                  ? theme.palette.primary.light
+                  ? theme.palette.primary.contrastText
                   : theme.palette.text.secondary,
               position: "relative",
               transition: "all 0.3s ease",
               transform:
-                activeIndex === index ? "translateY(-1.9rem)" : "translateY(0)", // Ícone sobe mais
+                activeIndex === index ? "translateY(-1.9rem)" : "translateY(0)",
             }}
           >
             {item.icon}
@@ -100,13 +107,13 @@ const NavbarButtonDown = () => {
             <Typography
               sx={{
                 fontSize: "0.75rem",
-                color: theme.palette.primary.contrastText,
+                color: theme.palette.text.primary,
                 marginTop: "-0.5rem",
                 opacity: 0,
                 transform: "translateY(1rem)",
                 transition: "all 0.3s ease",
                 position: "relative",
-                animation: "slideUp 1.0s forwards",
+                animation: "slideUp 0.5s forwards",
                 "@keyframes slideUp": {
                   from: { opacity: 0, transform: "translateY(1rem)" },
                   to: { opacity: 1, transform: "translateY(0)" },

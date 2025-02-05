@@ -1,17 +1,7 @@
-import LandingPage from "@/components/LandingPage";
-
-
-
-
 export default function PagesLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <div>
-            <LandingPage />
-            {children}
-        </div>
-    );
+  return <div>{children}</div>;
 }

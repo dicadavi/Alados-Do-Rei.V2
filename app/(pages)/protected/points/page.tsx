@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import PageDefault from "@/components/PageDefault";
+import PageDefault from "@/components/layout/PageDefault";
 import { useSession } from "next-auth/react";
 import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { Checkbox, Button, CircularProgress, Box } from "@mui/material";

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Form from "@/components/form";
+import Form from "@/components/forms/form";
 import Link from "next/link";
 
 export default function reset() {
@@ -18,9 +18,7 @@ export default function reset() {
             />
           </Link>
           <h3 className="text-xl font-semibold">Recuperação de senha</h3>
-          <p className="text-sm text-gray-500">
-           Recupere seu usuário e senha
-          </p>
+          <p className="text-sm text-gray-500">Recupere seu usuário e senha</p>
         </div>
         <Form type="reset" />
       </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Form from "@/components/form";
+import Form from "@/components/forms/form";
 import Link from "next/link";
 
 export default function register() {
@@ -19,7 +19,7 @@ export default function register() {
           </Link>
           <h3 className="text-xl font-semibold">Cadastrar-se</h3>
           <p className="text-sm text-gray-500">
-           Crie uma conta com seu usuário e senha
+            Crie uma conta com seu usuário e senha
           </p>
         </div>
         <Form type="register" />

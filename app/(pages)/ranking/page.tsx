@@ -1,8 +1,8 @@
 import * as React from "react";
 import { PrismaClient } from "@prisma/client";
 import { GridColDef } from "@mui/x-data-grid";
-import RankingList from "@/components/RankingTeste";
-import PageDefault from "@/components/PageDefault";
+import RankingList from "@/components/data-display/RankingTeste";
+import PageDefault from "@/components/layout/PageDefault";
 
 const prisma = new PrismaClient();
 
