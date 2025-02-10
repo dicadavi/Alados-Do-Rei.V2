@@ -43,7 +43,8 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
   return (
     <Box
       sx={{
-        maxWidth: 600,
+        width: "100%",
+        maxWidth: { xs: "100%", sm: 500, md: 600 }, // Responsivo para diferentes telas
         margin: "auto",
         p: 2,
         backgroundColor: theme.palette.background.paper,
@@ -52,11 +53,11 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
         transition: "background-color 0.3s ease, color 0.3s ease",
         display: "flex",
         flexDirection: "column",
-        maxHeight: "calc(100vh - 8rem)", // Limitar altura para não ultrapassar a tela
+        maxHeight: "calc(100vh - 8rem)", // Evita que ultrapasse a tela
         overflowY: "auto",
-        paddingBottom: "6rem", // Espaço extra para evitar que o navbar cubra o conteúdo
+        paddingBottom: "6rem",
       }}
-    >
+        >
       <Typography
         variant="h4"
         gutterBottom
@@ -163,13 +164,16 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                       sx={{
                         fontWeight: 600,
                         color: theme.palette.text.primary,
+                        whiteSpace: "nowrap",  // Evita quebra de linha
+                        overflow: "hidden",     // Esconde o texto que ultrapassar o espaço
+                        textOverflow: "ellipsis", // Adiciona "..."
+                        maxWidth: "150px", // Define um limite para o texto
                       }}
                     >
                       {item.name}
                     </Typography>
-
                     <Chip
-                      label={`${item.points.toLocaleString()} pts`}
+                      label={`${item.points.toLocaleString('pt-BR')} pts`}
                       sx={{
                         fontWeight: "bold",
                         minWidth: 100,
