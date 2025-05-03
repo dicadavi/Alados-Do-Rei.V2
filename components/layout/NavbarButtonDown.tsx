@@ -29,7 +29,7 @@ const NavbarButtonDown = () => {
     },
   ];
 
-  const positions = ["10%", "31%", "50%", "70%", "89%"];
+  const positions = ["10%", "30%", "50%", "70%", "90%"];
 
   return (
     <Box
@@ -41,7 +41,7 @@ const NavbarButtonDown = () => {
         display: { xs: "flex", sm: "none" },
         justifyContent: "space-around",
         alignItems: "center",
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: theme.palette.background.paper,
         borderTopLeftRadius: "0.75rem",
         borderTopRightRadius: "0.75rem",
         height: "4rem",
@@ -63,7 +63,7 @@ const NavbarButtonDown = () => {
           height: "3.9rem",
           background:
             theme.palette.mode === "dark"
-              ? `linear-gradient(to bottom, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`
+              ? `linear-gradient(to bottom, #090e10, ${theme.palette.primary.dark})`
               : `linear-gradient(to bottom, ${theme.palette.primary.dark}, ${theme.palette.primary.light})`,
           borderRadius: "50%",
           border: `6px solid ${
