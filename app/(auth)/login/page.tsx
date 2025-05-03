@@ -1,29 +1,64 @@
 import Image from "next/image";
 import Form from "@/components/forms/form";
 import Link from "next/link";
+import { Box, Container, Typography, Paper } from "@mui/material";
 
 export default function Login() {
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
-      <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl">
-        <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center sm:px-16">
-          <Link href="/">
-            <Image
-              src="/logo.png"
-              priority
-              alt="Logo"
-              className="h-10 w-10 rounded-full"
-              width={20}
-              height={20}
-            />
-          </Link>
-          <h3 className="text-xl font-semibold">Entrar</h3>
-          <p className="text-sm text-gray-500">
-            User seu e-mail e senha para entrar
-          </p>
-        </div>
-        <Form type="login" />
-      </div>
-    </div>
+    <Container maxWidth="sm">
+      <Box
+        sx={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          py: 4,
+          marginBottom: "100px",
+        }}
+      >
+        <Paper
+          elevation={3}
+          sx={{
+            width: "100%",
+            maxWidth: 400,
+            overflow: "hidden",
+            borderRadius: 2,
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 2,
+              borderBottom: 1,
+              borderColor: "divider",
+              bgcolor: "background.paper",
+              p: { xs: 2, sm: 4 },
+              pt: 4,
+            }}
+          >
+            <Link href="/">
+              <Image
+                src="/logo.png"
+                priority
+                alt="Logo"
+                className="h-10 w-10 rounded-full"
+                width={20}
+                height={20}
+              />
+            </Link>
+            <Typography variant="h5" component="h3" fontWeight="medium">
+              Entrar
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Use seu e-mail e senha para entrar
+            </Typography>
+          </Box>
+          <Form type="login" />
+        </Paper>
+      </Box>
+    </Container>
   );
 }

@@ -6,6 +6,19 @@ import LoadingDots from "@/components/common/loading-dots";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import {
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Stack,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export default function Form({
   type,
@@ -19,9 +32,16 @@ export default function Form({
   const [userName, setuserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleClickShowConfirmPassword = () =>
+    setShowConfirmPassword((show) => !show);
 
   return (
-    <form
+    <Box
+      component="form"
       onSubmit={(e) => {
         e.preventDefault();
         setLoading(true);
@@ -91,159 +111,163 @@ export default function Form({
           });
         }
       }}
-      className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 3,
+        bgcolor: "background.default",
+        p: { xs: 2, sm: 4 },
+        py: 4,
+      }}
     >
-      {type === "register" ? (
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Nome
-          </label>
-          <input
+      <Stack spacing={3}>
+        {type === "register" && (
+          <TextField
             id="name"
             name="name"
+            label="Nome"
             type="text"
             placeholder="Seu nome"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+            fullWidth
           />
-        </div>
-      ) : (
-        ""
-      )}
-      <div>
-        <label
-          htmlFor="userName"
-          className="block text-xs text-gray-600 uppercase"
-        >
-          Usuário
-        </label>
-        <input
+        )}
+
+        <TextField
           id="userName"
           name="userName"
+          label="Usuário"
           type="text"
           placeholder={type === "register" ? "Marcelinho10" : ""}
           value={userName}
           onChange={(e) => setuserName(e.target.value)}
           autoComplete="userName"
           required
-          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
-      </div>
-      {type === "register" || type === "reset" ? (
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Data De Nascimento
-          </label>
-          <input
+
+        {(type === "register" || type === "reset") && (
+          <TextField
             id="birth"
             name="birth"
+            label="Data de Nascimento"
             type="date"
-            placeholder="25/10/2008"
             value={birth}
             onChange={(e) => setbirth(e.target.value)}
             required
-            className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+            fullWidth
+            InputLabelProps={{ shrink: true }}
           />
-        </div>
-      ) : (
-        ""
-      )}
-      <div>
-        <label
-          htmlFor="password"
-          className="block text-xs text-gray-600 uppercase"
-        >
-          {type === "reset" ? "Nova Senha" : "Senha"}
-        </label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
-        />
-      </div>
-      {type === "register" || type === "reset" ? (
-        <div>
-          <label
-            htmlFor="confirmPassword"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            {type === "reset" ? "Confirmar Nova Senha" : "Confirmar Senha"}
-          </label>
-          <input
-            id="confirmPassword"
-            name="confirmPassword"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+        )}
+
+        <FormControl variant="outlined" fullWidth>
+          <InputLabel htmlFor="password">
+            {type === "reset" ? "Nova Senha" : "Senha"}
+          </InputLabel>
+          <OutlinedInput
+            id="password"
+            name="password"
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
-            className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label={type === "reset" ? "Nova Senha" : "Senha"}
           />
-        </div>
-      ) : (
-        ""
-      )}
-      <button
+        </FormControl>
+
+        {(type === "register" || type === "reset") && (
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel htmlFor="confirmPassword">
+              {type === "reset" ? "Confirmar Nova Senha" : "Confirmar Senha"}
+            </InputLabel>
+            <OutlinedInput
+              id="confirmPassword"
+              name="confirmPassword"
+              type={showConfirmPassword ? "text" : "password"}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowConfirmPassword}
+                    edge="end"
+                  >
+                    {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label={
+                type === "reset" ? "Confirmar Nova Senha" : "Confirmar Senha"
+              }
+            />
+          </FormControl>
+        )}
+      </Stack>
+
+      <Button
+        type="submit"
+        variant="contained"
         disabled={loading}
-        className={`${
-          loading
-            ? "cursor-not-allowed border-gray-200 bg-gray-100"
-            : "border-black bg-black text-white hover:bg-white hover:text-black"
-        } flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none`}
+        fullWidth
+        sx={{
+          height: 40,
+          textTransform: "none",
+          fontSize: "0.875rem",
+        }}
       >
         {loading ? (
-          <LoadingDots color="#808080" />
+          <LoadingDots color="#fff" />
+        ) : type === "login" ? (
+          "Entrar"
+        ) : type === "register" ? (
+          "Cadastrar-se"
         ) : (
-          <p>
-            {type === "login"
-              ? "Entrar"
-              : type === "register"
-              ? "Cadastrar-se"
-              : "Recuperar Senha"}
-          </p>
+          "Recuperar Senha"
         )}
-      </button>
-      {type === "login" ? (
-        <div>
-          <p className="text-center text-sm text-gray-600">
-            Não tem uma conta?{" "}
-            <Link href="/register" className="font-semibold text-gray-800">
-              Inscrever-se
-            </Link>{" "}
-          </p>
-          <p className="text-center text-sm text-gray-600">
-            Esqueceu sua senha?{" "}
-            <Link href="/reset" className="font-semibold text-gray-800">
-              Recuperar senha
+      </Button>
+
+      <Stack spacing={1} alignItems="center">
+        {type === "login" ? (
+          <>
+            <Typography variant="body2" color="text.secondary">
+              Não tem uma conta?{" "}
+              <Link
+                href="/register"
+                style={{ color: "inherit", fontWeight: 600 }}
+              >
+                Inscrever-se
+              </Link>
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Esqueceu sua senha?{" "}
+              <Link href="/reset" style={{ color: "inherit", fontWeight: 600 }}>
+                Recuperar senha
+              </Link>
+            </Typography>
+          </>
+        ) : (
+          <Typography variant="body2" color="text.secondary">
+            Já tem uma conta?{" "}
+            <Link href="/login" style={{ color: "inherit", fontWeight: 600 }}>
+              Entrar
             </Link>
-          </p>
-        </div>
-      ) : type === "register" ? (
-        <p className="text-center text-sm text-gray-600">
-          Já tem uma conta?{" "}
-          <Link href="/login" className="font-semibold text-gray-800">
-            Entrar
-          </Link>
-        </p>
-      ) : (
-        <p className="text-center text-sm text-gray-600">
-          Já tem uma conta?{" "}
-          <Link href="/login" className="font-semibold text-gray-800">
-            Entrar
-          </Link>
-        </p>
-      )}
-    </form>
+          </Typography>
+        )}
+      </Stack>
+    </Box>
   );
 }
