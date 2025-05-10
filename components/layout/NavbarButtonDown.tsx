@@ -18,7 +18,7 @@ const NavbarButtonDown = () => {
   const [activeIndex, setActiveIndex] = useState(2);
 
   const icons = [
-    { icon: <PersonOutlined />, label: "Profile", route: "/ranking" },
+    { icon: <PersonOutlined />, label: "Profile", route: "/profile" },
     { icon: <QuestionAnswerOutlined />, label: "Messages", route: "/ranking" },
     { icon: <HomeOutlined />, label: "Home", route: "/home" },
     { icon: <CameraAltOutlined />, label: "Photos", route: "/ranking" },

@@ -1,0 +1,8 @@
+export { Skin } from "./categories/skin";
+export { Body } from "./categories/body";
+export { Hat } from "./categories/hat";
+export { Affection } from "./categories/affection";
+export { Adornment } from "./categories/adornment";
+export { Hair } from "./categories/hair";
+export { Moustache } from "./categories/moustache";
+export type { AvatarPartProps, AvatarPart } from "./types";
