@@ -1,8 +1,7 @@
 import * as React from "react";
 import PageDefault from "@/components/layout/PageDefault";
 import { Box } from "@mui/material";
-import { AvatarDisplay } from "@/components/avatar/display";
-import { Affection, Body, Hat } from "@/lib/avatar";
+import { Affection, Body, Hair, Hat, Moustache } from "@/lib/avatar";
 
 const position = {
   top: 0,
@@ -23,15 +22,27 @@ export default async function Profile() {
           }}
         >
           <Body
-            id="thin"
-            width={100}
-            height={100}
+            id="body1"
+            width={400}
+            height={400}
             className="absolute top-0 left-0"
           />
           <Affection
-            id="default"
-            width={100}
-            height={100}
+            id="affection24"
+            width={400}
+            height={400}
+            className="absolute top-0 left-0"
+          />
+          <Hair
+            id="hair40"
+            width={400}
+            height={400}
+            className="absolute top-0 left-0"
+          />
+          <Moustache
+            id="moustache2"
+            width={400}
+            height={400}
             className="absolute top-0 left-0"
           />
         </Box>
