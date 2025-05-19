@@ -1,7 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image"; // Importando o componente otimizado do Next.js
+import { ModeContext } from "@/app/context/ModeProvider";
+import AppAppBar from "../layout/AppAppBar";
 import {
   Box,
   Typography,
@@ -23,6 +25,7 @@ interface RankingItem {
 
 export default function RankingTeste({ items }: { items: RankingItem[] }) {
   const theme = useTheme();
+  const { mode, toggleColorMode } = useContext(ModeContext);
 
   // Funções auxiliares
   const getMedalImage = (position: number) =>
@@ -41,14 +44,18 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
   };
 
   return (
+    <>
+      <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
+       <Box sx={{ ...theme.mixins.toolbar }} /> {/* Dá espaço entre a AppBar e o ranking */}
+
     <Box
       sx={{
         width: "100%",
-        maxWidth: { xs: "100%", sm: 500, md: 600 }, // Responsivo para diferentes telas
-        margin: "auto",
+        maxWidth: { xs: "100%", sm: 500, md: 600 }, // Responsivo para diferentes telas 
+        marginTop: "5px",
         p: 2,
-        backgroundColor: theme.palette.background.paper,
-        borderRadius: 2,
+        background: theme.palette.background.gradient, //Conteiner externo do ranking
+        borderRadius: 2, 
         boxShadow: theme.shadows[2],
         transition: "background-color 0.3s ease, color 0.3s ease",
         display: "flex",
@@ -80,7 +87,7 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                 display: "flex",
                 alignItems: "center",
                 paddingLeft: 0,
-                backgroundColor: theme.palette.background.default,
+                backgroundColor: theme.palette.boxList.default, // cor do conteiner com cada item da lista
                 borderRadius: 2,
                 boxShadow: theme.shadows[1],
                 transition: "background-color 0.3s ease",
@@ -196,8 +203,8 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                   alignItems: "center",
                   justifyContent: "center",
                   my: 3,
-                  py: 2,
-                  backgroundColor: theme.palette.secondary.light,
+                  py: 1,
+                  backgroundColor: theme.palette.primary.dark,
                   borderRadius: 2,
                   boxShadow: theme.shadows[2],
                 }}
@@ -234,5 +241,6 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
         ))}
       </List>
     </Box>
+    </>
   );
 }

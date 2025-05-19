@@ -18,7 +18,25 @@ declare module "@mui/material/styles/createPalette" {
   }
 
   interface PaletteColor extends ColorRange {}
+
+  interface TypeBackground {
+    gradient?: string;
+  }
+
+  interface Palette {
+    boxList: {
+      default: string;
+    };
+  }
+
+  interface PaletteOptions {
+    boxList?: {
+      default: string;
+    };
+  }
 }
+
+
 
 export const brand = {
   50: "#F0F7FF",
@@ -138,7 +156,12 @@ const getDesignTokens = (mode: PaletteMode) => ({
     background: {
       default: "#fff",
       paper: gray[50],
-      ...(mode === "dark" && { default: gray[900], paper: gray[800] }),
+      gradient : "linear-gradient(180deg, #4fa3d7 0%, #88bbef66 55%);",
+      ...(mode === "dark" && { default: gray[900], paper: gray[800], gradient: "linear-gradient(#02294F, #090E10)" }),
+    },
+    boxList: { //Boxes do ranking
+      default: "#f6f1ef59",
+      ...(mode === "dark" && { default: "#090e1059"}),
     },
     text: {
       primary: gray[800],
@@ -569,69 +592,69 @@ export default function getLPTheme(mode: PaletteMode): ThemeOptions {
           },
         },
       },
-      // MuiTextField: {
-      //   styleOverrides: {
-      //     root: ({ theme }) => ({
-      //       "& label .Mui-focused": {
-      //         color: "white",
-      //       },
-      //       "& .MuiInputBase-input": {
-      //         boxSizing: "border-box",
-      //         "&::placeholder": {
-      //           opacity: 0.7,
-      //         },
-      //       },
-      //       "& .MuiOutlinedInput-root": {
-      //         boxSizing: "border-box",
-      //         minWidth: 280,
-      //         minHeight: 50,
-      //         height: "100%",
-      //         borderRadius: "10px",
-      //         border: "1px solid",
-      //         borderColor: gray[200],
-      //         transition: "border-color 120ms ease-in",
-      //         "& fieldset": {
-      //           border: "none",
-      //           boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-      //           background: `${alpha("#FFF", 0.3)}`,
-      //         },
-      //         "&:hover": {
-      //           borderColor: brand[300],
-      //         },
-      //         "&.Mui-focused": {
-      //           borderColor: brand[400],
-      //           outline: "4px solid",
-      //           outlineColor: brand[200],
-      //         },
-      //       },
-      //       ...(theme.palette.mode === "dark" && {
-      //         "& .MuiOutlinedInput-root": {
-      //           boxSizing: "border-box",
-      //           minWidth: 280,
-      //           minHeight: 50,
-      //           height: "100%",
-      //           borderRadius: "10px",
-      //           border: "1px solid",
-      //           borderColor: gray[600],
-      //           transition: "border-color 120ms ease-in",
-      //           "& fieldset": {
-      //             border: "none",
-      //             boxShadow: " 0px 2px 4px rgba(0, 0, 0, 0.4)",
-      //             background: `${alpha(gray[800], 0.4)}`,
-      //           },
-      //           "&:hover": {
-      //             borderColor: brand[300],
-      //           },
-      //           "&.Mui-focused": {
-      //             borderColor: brand[400],
-      //             outline: "4px solid",
-      //             outlineColor: alpha(brand[500], 0.5),
-      //           },
-      //         },
-      //       }),
-      //     }),
-      //   },
-      // },
+      MuiTextField: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            "& label .Mui-focused": {
+              color: "white",
+            },
+            "& .MuiInputBase-input": {
+              boxSizing: "border-box",
+              "&::placeholder": {
+                opacity: 0.7,
+              },
+            },
+            "& .MuiOutlinedInput-root": {
+              boxSizing: "border-box",
+              minWidth: 280,
+              minHeight: 40,
+              height: "100%",
+              borderRadius: "10px",
+              border: "1px solid",
+              borderColor: gray[200],
+              transition: "border-color 120ms ease-in",
+              "& fieldset": {
+                border: "none",
+                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+                background: `${alpha("#FFF", 0.3)}`,
+              },
+              "&:hover": {
+                borderColor: brand[300],
+              },
+              "&.Mui-focused": {
+                borderColor: brand[400],
+                outline: "4px solid",
+                outlineColor: brand[200],
+              },
+            },
+            ...(theme.palette.mode === "dark" && {
+              "& .MuiOutlinedInput-root": {
+                boxSizing: "border-box",
+                minWidth: 280,
+                minHeight: 40,
+                height: "100%",
+                borderRadius: "10px",
+                border: "1px solid",
+                borderColor: gray[600],
+                transition: "border-color 120ms ease-in",
+                "& fieldset": {
+                  border: "none",
+                  boxShadow: " 0px 2px 4px rgba(0, 0, 0, 0.4)",
+                  background: `${alpha(gray[800], 0.4)}`,
+                },
+                "&:hover": {
+                  borderColor: brand[300],
+                },
+                "&.Mui-focused": {
+                  borderColor: brand[400],
+                  outline: "4px solid",
+                  outlineColor: alpha(brand[500], 0.5),
+                },
+              },
+            }),
+          }),
+        },
+      },
     },
   };
 }
