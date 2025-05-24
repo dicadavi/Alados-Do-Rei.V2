@@ -1,60 +1,19 @@
 import { AvatarPart, AvatarPartProps } from "../types";
+import Skin1 from "../componentes/skin/Skin1";
+import Skin2 from "../componentes/skin/Skin2";
+import Skin3 from "../componentes/skin/Skin3";
+import Skin4 from "../componentes/skin/Skin4";
+import Skin5 from "../componentes/skin/Skin5";
+import Skin6 from "../componentes/skin/Skin6";
 
 const skins: Record<string, AvatarPart> = {
-  default: (props: AvatarPartProps) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={props.width || 100}
-      height={props.height || 100}
-      {...props}
-    >
-      <circle cx="50" cy="50" r="40" fill="pink" />
-      <circle cx="35" cy="40" r="5" fill="black" />
-      <circle cx="65" cy="40" r="5" fill="black" />
-      <path
-        d="M 35 65 Q 50 75 65 65"
-        stroke="black"
-        fill="none"
-        strokeWidth="2"
-      />
-    </svg>
-  ),
-  happy: (props: AvatarPartProps) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={props.width || 100}
-      height={props.height || 100}
-      {...props}
-    >
-      <circle cx="50" cy="50" r="40" fill="pink" />
-      <circle cx="35" cy="40" r="5" fill="black" />
-      <circle cx="65" cy="40" r="5" fill="black" />
-      <path
-        d="M 35 60 Q 50 75 65 60"
-        stroke="black"
-        fill="none"
-        strokeWidth="2"
-      />
-    </svg>
-  ),
-  sad: (props: AvatarPartProps) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={props.width || 100}
-      height={props.height || 100}
-      {...props}
-    >
-      <circle cx="50" cy="50" r="40" fill="pink" />
-      <circle cx="35" cy="40" r="5" fill="black" />
-      <circle cx="65" cy="40" r="5" fill="black" />
-      <path
-        d="M 35 75 Q 50 60 65 75"
-        stroke="black"
-        fill="none"
-        strokeWidth="2"
-      />
-    </svg>
-  ),
+  default: (props: AvatarPartProps) => <Skin1 {...props} />,
+  skin1: (props: AvatarPartProps) => <Skin1 {...props} />,
+  skin2: (props: AvatarPartProps) => <Skin2 {...props} />,
+  skin3: (props: AvatarPartProps) => <Skin3 {...props} />,
+  skin4: (props: AvatarPartProps) => <Skin4 {...props} />,
+  skin5: (props: AvatarPartProps) => <Skin5 {...props} />,
+  skin6: (props: AvatarPartProps) => <Skin6 {...props} />,
 };
 
 export const Skin: AvatarPart = (props) => {
