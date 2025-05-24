@@ -124,6 +124,7 @@ export default async function Profile({
               height={400}
               className="absolute top-0 left-0"
               rootColor={affection.rootColor}
+              gradientColor={skin.rootColor}
             />
           )}
           {showHair && hair && (

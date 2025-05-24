@@ -1,4 +1,5 @@
 import * as React from "react";
+import { lightenColor } from "../color/colorUtils";
 
 function SvgComponent(props) {
   return (
@@ -34,7 +35,7 @@ function SvgComponent(props) {
         />
         <path
           d="M238.072 302.812c3.399-5.001 6.788-9.657 10.687-15.015 3.744 5.658 7.187 10.862 10.914 16.278.802 2.127 1.318 4.041 1.834 5.954 1.593 5.905-.426 11.202-5.611 14.723-4.42 3.001-10.334 3.041-14.495.097-5.429-3.842-7.515-9.256-5.721-15.158.673-2.215 1.58-4.358 2.392-6.879z"
-          fill="#f8ad95"
+          fill={lightenColor(props.gradientColor, 0.2)}
           className=""
         />
         <path
