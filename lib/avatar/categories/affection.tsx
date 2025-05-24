@@ -119,7 +119,7 @@ const affections: Record<string, AvatarPart> = {
 };
 
 export const Affection: AvatarPart = (props) => {
-  const { id, ...rest } = props;
+  const { id, rootColor, ...rest } = props;
   const AffectionComponent = affections[id] || affections.default;
-  return <AffectionComponent id={id} {...rest} />;
+  return <AffectionComponent id={id} rootColor={rootColor} {...rest} />;
 };

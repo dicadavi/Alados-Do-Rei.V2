@@ -11,7 +11,7 @@ export default async function ProfilePage() {
       moustache={{ id: "6", rootColor: "#3d3d3d" }}
       hair={{ id: "72", rootColor: "#249472" }}
       nose={{ id: "1" }}
-      adornment={{ id: "7", rootColor: "#abcdef" }}
+      adornment={{ id: "1", rootColor: "#A48460" }}
       hat={{ id: "8", rootColor: "#abcdef" }}
       showSkin={true}
       showBody={true}
@@ -19,7 +19,7 @@ export default async function ProfilePage() {
       showMoustache={true}
       showHair={true}
       showNose={true}
-      showAdornment={false}
+      showAdornment={true}
       showHat={false}
     />
   );

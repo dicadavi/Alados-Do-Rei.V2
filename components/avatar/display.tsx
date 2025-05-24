@@ -58,7 +58,7 @@ interface ProfileProps {
   affection?: AffectionProps;
   moustache?: MoustacheProps;
   hair?: HairProps;
-  nose?: NoseProps;
+  nose: NoseProps;
   adornment?: AdornmentProps;
   hat?: HatProps;
   showSkin?: boolean;
