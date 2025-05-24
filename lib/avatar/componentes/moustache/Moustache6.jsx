@@ -12,13 +12,13 @@ function SvgComponent(props) {
     >
       <path
         d="M265 308h-41l-35 9 5 43 57 5 33-16-19-41z"
-        fill="#434343"
+        fill={props.rootColor}
         className=""
       />
       <defs>
         <linearGradient id="MoustacheA" x1={0.5} y1={0} x2={0.5} y2={1}>
-          <stop offset={0} stopColor="#ead0c6" />
-          <stop offset={1} stopColor="#434343" />
+          <stop offset={0} stopColor={props.gradientColor} />
+          <stop offset={1} stopColor={props.rootColor} />
         </linearGradient>
         <pattern
           patternUnits="userSpaceOnUse"
@@ -38,8 +38,8 @@ function SvgComponent(props) {
       />
       <defs>
         <linearGradient id="MoustacheC" x1={0.5} y1={0} x2={0.5} y2={1}>
-          <stop offset={0} stopColor="#ead0c6" />
-          <stop offset={1} stopColor="#434343" />
+          <stop offset={0} stopColor={props.gradientColor} />
+          <stop offset={1} stopColor={props.rootColor} />
         </linearGradient>
         <pattern
           patternUnits="userSpaceOnUse"
@@ -61,7 +61,7 @@ function SvgComponent(props) {
       <g>
         <path
           d="M383.06 298.857c1.98 15.399 3.967 30.797 5.933 46.198.379 2.965.964 5.942.959 8.913-.07 38.268-29.432 68.419-66.603 68.109-53.145-.443-106.297-.082-159.447-.137-30.003-.032-58.35-25.933-62.086-55.575-1.568-12.442 1.461-24.121 3.167-36.067 1.456-10.202 3.323-20.344 5.104-31.317 1.015-5.199 1.934-9.594 3.325-13.989 7.765-.324 15.057-.646 22.435-.567 2.164 17.058 9.338 23.393 26.134 23.409 23.308.022 46.616.046 69.932.432-.502 8.349 3.834 14.601 10.779 15.894 7.016 1.307 13.567-2.779 15.592-9.974.569-2.021.442-4.237 1.107-6.359 23.944.005 47.413-.022 70.882.021 8.306.016 16.25-1.628 21.669-8.196 3.481-4.219 5.4-9.726 8.49-14.658 7.156.002 13.841.006 20.659.395.745 4.745 1.357 9.106 1.969 13.468zm-161.059 35.949c-4.999-3.771-10.123-7.388-14.944-11.374-2.558-2.114-5.146-3.752-7.915-1.392-2.533 2.16-2.169 5.54.072 7.587 4.954 4.526 9.936 9.277 15.671 12.63 7.765 4.541 16.696 5.523 25.622 4.446 3.342-.404 6.934-2.002 6.125-6.336-.664-3.551-3.855-3.732-7.105-3.845-5.594-.194-11.167-.995-17.526-1.716z"
-          fill="#434343"
+          fill={props.rootColor}
           className=""
         />
       </g>

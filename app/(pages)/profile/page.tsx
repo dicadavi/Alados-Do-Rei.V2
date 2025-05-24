@@ -54,9 +54,11 @@ export default async function Profile() {
             className="absolute top-0 left-0"
           />
           <Moustache
-            id="moustache4"
+            id="moustache6"
             width={400}
             height={400}
+            rootColor="#874521"
+            gradientColor="#6d3f4c"
             className="absolute top-0 left-0"
           />
           <Nose

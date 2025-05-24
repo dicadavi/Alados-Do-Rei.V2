@@ -17,7 +17,14 @@ const moustaches: Record<string, AvatarPart> = {
 };
 
 export const Moustache: AvatarPart = (props) => {
-  const { id, ...rest } = props;
+  const { id, rootColor, gradientColor, ...rest } = props;
   const MoustacheComponent = moustaches[id] || moustaches.default;
-  return <MoustacheComponent id={id} {...rest} />;
+  return (
+    <MoustacheComponent
+      id={id}
+      rootColor={rootColor || "#444"}
+      gradientColor={gradientColor || "#f0d5ca"}
+      {...rest}
+    />
+  );
 };

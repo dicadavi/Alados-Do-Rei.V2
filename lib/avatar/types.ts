@@ -3,6 +3,8 @@ export interface AvatarPartProps {
   className?: string;
   width?: number;
   height?: number;
+  rootColor?: string;
+  gradientColor?: string;
   [key: string]: any;
 }
 
