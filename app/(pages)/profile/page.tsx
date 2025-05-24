@@ -10,7 +10,7 @@ export default async function ProfilePage() {
       affection={{ id: "1", rootColor: "#123456" }}
       moustache={{ id: "6", rootColor: "#3d3d3d" }}
       hair={{ id: "72", rootColor: "#249472" }}
-      nose={{ id: "6", rootColor: "#abcdef" }}
+      nose={{ id: "1" }}
       adornment={{ id: "7", rootColor: "#abcdef" }}
       hat={{ id: "8", rootColor: "#abcdef" }}
       showSkin={true}

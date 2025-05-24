@@ -6,7 +6,7 @@ const noses: Record<string, AvatarPart> = {
 };
 
 export const Nose: AvatarPart = (props) => {
-  const { id, ...rest } = props;
+  const { id, rootColor, ...rest } = props;
   const NoseComponent = noses[id] || noses.default;
-  return <NoseComponent id={id} {...rest} />;
+  return <NoseComponent id={id} rootColor={rootColor} {...rest} />;
 };

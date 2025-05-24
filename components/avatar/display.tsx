@@ -39,7 +39,6 @@ interface HairProps {
 
 interface NoseProps {
   id: string;
-  rootColor: string;
 }
 
 interface AdornmentProps {
@@ -153,7 +152,7 @@ export default async function Profile({
               width={400}
               height={400}
               className="absolute top-0 left-0"
-              rootColor={nose.rootColor}
+              rootColor={skin.rootColor}
             />
           )}
           {showAdornment && adornment && (
