@@ -41,6 +41,12 @@ export default async function Profile() {
             height={400}
             className="absolute top-0 left-0"
           />
+          <Hair
+            id="hair6"
+            width={400}
+            height={400}
+            className="absolute top-0 left-0"
+          />
           <Affection
             id="affection50"
             width={400}
@@ -48,13 +54,7 @@ export default async function Profile() {
             className="absolute top-0 left-0"
           />
           <Moustache
-            id="moustache6"
-            width={400}
-            height={400}
-            className="absolute top-0 left-0"
-          />
-          <Hair
-            id="hair13"
+            id="moustache4"
             width={400}
             height={400}
             className="absolute top-0 left-0"

@@ -16,7 +16,7 @@ function SvgComponent(props) {
         className=""
       />
       <defs>
-        <linearGradient id="a" x1={0.5} y1={0} x2={0.5} y2={1}>
+        <linearGradient id="MoustacheA" x1={0.5} y1={0} x2={0.5} y2={1}>
           <stop offset={0} stopColor="#ead0c6" />
           <stop offset={1} stopColor="#434343" />
         </linearGradient>
@@ -26,18 +26,18 @@ function SvgComponent(props) {
           y={247}
           width={22.5}
           height={38.5}
-          id="b"
+          id="MoustacheB"
         >
-          <path fill="url(#a)" d="M0 0H22.5V38.5H0z" />
+          <path fill="url(#MoustacheA)" d="M0 0H22.5V38.5H0z" />
         </pattern>
       </defs>
       <path
         d="M113.5 285.5l5.357-35.461s2.93-3.039 8.572-3.039c5.787 0 8.571 3.039 8.571 3.039V285.5h-22.5z"
-        fill="url(#b)"
+        fill="url(#MoustacheB)"
         className=""
       />
       <defs>
-        <linearGradient id="c" x1={0.5} y1={0} x2={0.5} y2={1}>
+        <linearGradient id="MoustacheC" x1={0.5} y1={0} x2={0.5} y2={1}>
           <stop offset={0} stopColor="#ead0c6" />
           <stop offset={1} stopColor="#434343" />
         </linearGradient>
@@ -48,14 +48,14 @@ function SvgComponent(props) {
           width={20.5}
           height={38}
           patternTransform="scale(-1 1) rotate(.497 .015 -85246.317)"
-          id="d"
+          id="MoustacheD"
         >
-          <path fill="url(#c)" d="M0 0H20.5V38H0z" />
+          <path fill="url(#MoustacheC)" d="M0 0H20.5V38H0z" />
         </pattern>
       </defs>
       <path
         d="M381.164 285.91l-5.184-34.956s-2.695-2.977-7.835-2.932c-5.273.046-7.783 3.067-7.783 3.067l.303 34.999 20.499-.178z"
-        fill="url(#d)"
+        fill="url(#MoustacheD)"
         className=""
       />
       <g>
