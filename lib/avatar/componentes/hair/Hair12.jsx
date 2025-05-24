@@ -13,8 +13,8 @@ function SvgComponent(props) {
       <rect width={495} height={684} ry={0} rx={0} className="" />
       <defs>
         <linearGradient id="a" x1={0.5} y1={0} x2={0.5} y2={1}>
-          <stop offset={0} stopColor="#3d3d3d" />
-          <stop offset={1} stopColor="#fee2d6" />
+          <stop offset={0} stopColor={props.rootColor} />
+          <stop offset={1} stopColor={props.gradientColor} />
         </linearGradient>
         <pattern
           patternUnits="userSpaceOnUse"
@@ -34,8 +34,8 @@ function SvgComponent(props) {
       />
       <defs>
         <linearGradient id="c" x1={0.5} y1={0} x2={0.5} y2={1}>
-          <stop offset={0} stopColor="#3d3d3d" />
-          <stop offset={1} stopColor="#fee2d6" />
+          <stop offset={0} stopColor={props.rootColor} />
+          <stop offset={1} stopColor={props.gradientColor} />
         </linearGradient>
         <pattern
           patternUnits="userSpaceOnUse"
@@ -56,7 +56,7 @@ function SvgComponent(props) {
       <g>
         <path
           d="M352.913 200.177c-8.028-16.448-20.506-26.556-38.568-29.385-2.12-.332-4.31-.288-6.468-.289-39.602-.015-79.205.127-118.807-.066-21.426-.105-35.919 9.8-45.105 29.387-7.025.223-13.351-.033-19.65.268-4.618.221-7.036-1.11-6.327-6.079-.328-5.906-.911-11.812-.939-17.72-.11-23.495-.112-46.99-.03-70.485.083-23.876 22.818-40.315 45.275-32.608 3.686 1.265 6.789 4.146 10.382 5.8 1.555.716 4.255 1.012 5.443.143 14.669-10.726 28.657-10.736 43.718-.045 1.222.867 4.348.713 5.515-.258 12.52-10.408 30.393-9.882 42.889.107 2.13 1.703 3.456 1.465 5.595-.04 14.855-10.446 28.367-10.428 43.399.067 2.198 1.534 3.433 1.516 5.559-.135 10.422-8.091 22.142-10.274 34.226-4.906 13.46 5.979 20.882 16.764 20.944 31.806.121 29.326-.048 58.655.121 87.981.026 4.677-1.234 6.612-6.178 6.377-6.813-.325-13.657-.007-20.994.08z"
-          fill="#3d3d3d"
+          fill={props.rootColor}
           className=""
         />
       </g>

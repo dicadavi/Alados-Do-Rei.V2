@@ -149,7 +149,14 @@ const hairs: Record<string, AvatarPart> = {
 };
 
 export const Hair: AvatarPart = (props) => {
-  const { id, ...rest } = props;
+  const { id, rootColor, gradientColor, ...rest } = props;
   const HairComponent = hairs[id] || hairs.default;
-  return <HairComponent id={id} {...rest} />;
+  return (
+    <HairComponent
+      id={id}
+      rootColor={rootColor}
+      gradientColor={gradientColor}
+      {...rest}
+    />
+  );
 };

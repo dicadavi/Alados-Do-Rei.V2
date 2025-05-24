@@ -1,74 +1,26 @@
 import * as React from "react";
-import PageDefault from "@/components/layout/PageDefault";
-import { Box } from "@mui/material";
-import {
-  Affection,
-  Body,
-  Hair,
-  Hat,
-  Moustache,
-  Skin,
-  Nose,
-} from "@/lib/avatar";
 
-const position = {
-  top: 0,
-  left: 0,
-  absolute: true,
-};
+import Profile from "@/components/avatar/display";
 
-export default async function Profile() {
+export default async function ProfilePage() {
   return (
-    <PageDefault>
-      <Box>
-        {/* <AvatarDisplay className="sua-classe-adicional" /> */}
-        <Box
-          sx={{
-            position: "relative",
-            width: "100px",
-            height: "100px",
-          }}
-        >
-          <Skin
-            id="skin6"
-            width={400}
-            height={400}
-            className="absolute top-0 left-0"
-          />
-          <Body
-            id="body6"
-            width={400}
-            height={400}
-            className="absolute top-0 left-0"
-          />
-          <Hair
-            id="hair6"
-            width={400}
-            height={400}
-            className="absolute top-0 left-0"
-          />
-          <Affection
-            id="affection50"
-            width={400}
-            height={400}
-            className="absolute top-0 left-0"
-          />
-          <Moustache
-            id="moustache6"
-            width={400}
-            height={400}
-            rootColor="#874521"
-            gradientColor="#6d3f4c"
-            className="absolute top-0 left-0"
-          />
-          <Nose
-            id="default"
-            width={400}
-            height={400}
-            className="absolute top-0 left-0"
-          />
-        </Box>
-      </Box>
-    </PageDefault>
+    <Profile
+      skin={{ rootColor: "#6f3f3c" }}
+      body={{ id: "6", rootColor: "#abcdef" }}
+      affection={{ id: "1", rootColor: "#123456" }}
+      moustache={{ id: "6", rootColor: "#3d3d3d" }}
+      hair={{ id: "72", rootColor: "#249472" }}
+      nose={{ id: "6", rootColor: "#abcdef" }}
+      adornment={{ id: "7", rootColor: "#abcdef" }}
+      hat={{ id: "8", rootColor: "#abcdef" }}
+      showSkin={true}
+      showBody={true}
+      showAffection={true}
+      showMoustache={true}
+      showHair={true}
+      showNose={true}
+      showAdornment={false}
+      showHat={false}
+    />
   );
 }
