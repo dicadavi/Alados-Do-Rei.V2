@@ -127,7 +127,7 @@ export default async function Profile({
               gradientColor={skin.rootColor}
             />
           )}
-          {showHair && hair && (
+          {showHair && hair && !showHat && (
             <Hair
               id={"hair" + hair.id}
               rootColor={hair.rootColor}
