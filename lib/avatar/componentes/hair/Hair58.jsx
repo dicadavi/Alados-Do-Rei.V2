@@ -12,13 +12,13 @@ function SvgComponent(props) {
     >
       <path
         d="M355.136 222.964c-.214-12.27-2.785-23.629-11.41-33.105-8.522-9.363-18.908-14.433-31.496-14.815-7.426-.225-14.864-.041-23.202-.041 1.394-5.022 2.532-9.121 3.853-13.936.794-2.82 1.404-4.924 2.172-7.349a165.394 165.394 0 001.987-6.053c2.657-7.902 1.7-8.989-7.163-8.566-4.944.236-5.297 4.24-6.009 8.243-.749 2.418-1.349 4.507-2.15 6.898-.726 2.442-1.251 4.585-1.777 6.727-1.167 3.443-2 7.058-3.64 10.259-.839 1.636-3.108 3.573-4.759 3.6-16.233.267-32.472.116-48.708.198-3.048.016-4.45-1.283-5.146-4.15-.778-3.206-1.974-6.311-3.24-10.132-.934-2.737-1.615-4.802-2.332-7.248-.73-2.751-1.423-5.122-2.148-7.88-1.406-2.417-2.457-5.729-4.231-6.177-2.725-.687-5.947.595-8.958 1.041.387 2.17.773 4.341 1.182 6.893.678 2.461 1.333 4.541 2.008 7.002.676 2.463 1.333 4.544 1.99 6.626.821 3.22 1.553 6.467 2.487 9.654.909 3.098-.198 4.367-3.326 4.342-5.66-.045-11.323-.075-16.982.024-21.139.367-39.717 17.211-42.175 38.175-.348 2.964-.695 5.929-1.527 9.34-7.999.462-15.514.476-23.029.491l2.805-32.601c-7.129-2.567-15.794-4.335-23.021-8.563-16.78-9.816-23.127-30.683-16.369-48.884 1.041-2.803 1.455-6.136 1.118-9.106-2.369-20.923 13.587-36.45 34.271-33.223 1.876.293 4.099.219 5.801-.517 27.387-11.847 55.881 7.122 58.159 33.758.025.291.3.561.541.988l21.144-6.369c-.513-.892-.999-1.866-1.601-2.762-15.076-22.427-6.827-50.83 17.868-61.919 2.162-.971 4.306-2.682 5.678-4.605 12.868-18.043 38.259-15.609 48.314.498.981 1.572 2.765 2.923 4.481 3.714 26.483 12.208 34.13 38.983 18.049 63.472-.261.398-.386.886-.66 1.534a398693.2 398693.2 0 0020.685 6.175c.713-4.289 1.024-8.739 2.223-12.936 6.99-24.461 31.627-36.533 55.332-27.433 2.19.841 4.854 1.119 7.186.811 21.35-2.827 37.019 13.064 33.903 34.399-.294 2.014.099 4.325.813 6.262 10.423 28.301-5.875 54.594-35.729 57.519-1.636.16-3.26.444-3.978.544 1.798 12.953 3.564 25.673 4.787 38.813-8.385.404-16.228.387-24.071.37z"
-        fill={props.rootColor}
+        fill={props.rootcolor}
         className=""
       />
       <defs>
         <linearGradient id="HairA" x1={0.5} y1={0} x2={0.5} y2={1}>
-          <stop offset={0} stopColor={props.rootColor} />
-          <stop offset={1} stopColor={props.gradientColor} />
+          <stop offset={0} stopColor={props.rootcolor} />
+          <stop offset={1} stopColor={props.gradientcolor} />
         </linearGradient>
         <pattern
           patternUnits="userSpaceOnUse"
@@ -41,8 +41,8 @@ function SvgComponent(props) {
       />
       <defs>
         <linearGradient id="HairC" x1={0.5} y1={0} x2={0.5} y2={1}>
-          <stop offset={0} stopColor={props.rootColor} />
-          <stop offset={1} stopColor={props.gradientColor} />
+          <stop offset={0} stopColor={props.rootcolor} />
+          <stop offset={1} stopColor={props.gradientcolor} />
         </linearGradient>
         <pattern
           patternUnits="userSpaceOnUse"
@@ -66,8 +66,8 @@ function SvgComponent(props) {
       <g>
         <defs>
           <linearGradient id="HairE" x1={0.5} y1={0} x2={0.5} y2={1}>
-            <stop offset={0} stopColor={props.rootColor} />
-            <stop offset={1} stopColor={props.gradientColor} />
+            <stop offset={0} stopColor={props.rootcolor} />
+            <stop offset={1} stopColor={props.gradientcolor} />
           </linearGradient>
           <pattern
             patternUnits="userSpaceOnUse"
@@ -93,8 +93,8 @@ function SvgComponent(props) {
       <g>
         <defs>
           <linearGradient id="HairG" x1={0.5} y1={0} x2={0.5} y2={1}>
-            <stop offset={0} stopColor={props.rootColor} />
-            <stop offset={1} stopColor={props.gradientColor} />
+            <stop offset={0} stopColor={props.rootcolor} />
+            <stop offset={1} stopColor={props.gradientcolor} />
           </linearGradient>
           <pattern
             patternUnits="userSpaceOnUse"

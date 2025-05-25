@@ -19,7 +19,7 @@ function SvgComponent(props) {
       />
       <path
         d="M235.307 317.272c-.935-12.2 7.169-19.931 13.265-29.806 6.084 9.933 14.302 17.653 13.283 30.11-.941 1.619-1.801 2.84-2.773 3.964-7.54 8.71-17.685 6.978-23.775-4.268z"
-        fill={lightenColor(props.gradientColor, 0.2)}
+        fill={lightenColor(props.gradientcolor, 0.2)}
         className=""
       />
       <path

@@ -26,7 +26,7 @@ const hats: Record<string, AvatarPart> = {
 };
 
 export const Hat: AvatarPart = (props) => {
-  const { id, rootColor, ...rest } = props;
+  const { id, rootcolor, ...rest } = props;
   const HatComponent = hats[id] || hats.default;
-  return <HatComponent id={id} rootColor={rootColor} {...rest} />;
+  return <HatComponent id={id} rootcolor={rootcolor} {...rest} />;
 };

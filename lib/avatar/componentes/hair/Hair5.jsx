@@ -2,7 +2,7 @@ import * as React from "react";
 import { darkenColor } from "../color/colorUtils";
 
 function SvgComponent(props) {
-  const darkRootColor = darkenColor(props.rootColor, 0.5);
+  const darkrootcolor = darkenColor(props.rootcolor, 0.5);
 
   return (
     <svg
@@ -17,12 +17,12 @@ function SvgComponent(props) {
 
       <path
         d="M325.995 170.627c-51.696.442-103.378.469-155.526.44-1.608-16.47 1.723-31.684 10.745-45.707 9.778-15.195 23.289-25.267 40.25-30.876 6.324-2.091 12.173 2.304 12.499 9.024.119 2.451.019 4.912.019 8.401 2.477-.976 4.124-1.479 5.638-2.244 19.869-10.048 40.972-15.489 63.153-16.634 6.729-.348 13.706-.905 20.206.419 11.963 2.437 16.362 10.058 14.007 22.018-3.597 18.26-7.312 36.497-10.991 55.159z"
-        fill={props.rootColor}
+        fill={props.rootcolor}
         className=""
       />
       <path
         d="M378.928 243.85c-28.69 4.299-52.016-14.381-52.925-42.145-.321-9.801-.13-19.618-.177-29.872 27.836-.429 52.664 23.857 53.087 51.546.102 6.659.02 13.32.015 20.471zM169.18 171.473c.044 13.149 1.332 26.556-1.081 39.262-4.276 22.522-25.907 36.381-49.735 33.613-.19-8.687-.787-17.245.233-25.606 3.232-26.477 25.314-45.862 50.583-47.269z"
-        fill={darkRootColor}
+        fill={darkrootcolor}
         transform="scale(1.0089)"
         transform-origin="center"
         className=""

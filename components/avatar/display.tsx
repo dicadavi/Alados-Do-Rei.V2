@@ -14,27 +14,27 @@ import {
 
 // Definindo as tipagens para as props de cada componente
 interface SkinProps {
-  rootColor: string;
+  rootcolor: string;
 }
 
 interface BodyProps {
   id: string;
-  rootColor: string;
+  rootcolor: string;
 }
 
 interface AffectionProps {
   id: string;
-  rootColor: string;
+  rootcolor: string;
 }
 
 interface MoustacheProps {
   id: string;
-  rootColor: string;
+  rootcolor: string;
 }
 
 interface HairProps {
   id: string;
-  rootColor: string;
+  rootcolor: string;
 }
 
 interface NoseProps {
@@ -43,12 +43,12 @@ interface NoseProps {
 
 interface AdornmentProps {
   id: string;
-  rootColor: string;
+  rootcolor: string;
 }
 
 interface HatProps {
   id: string;
-  rootColor: string;
+  rootcolor: string;
 }
 
 // Atualizando a interface ProfileProps
@@ -105,7 +105,7 @@ export default async function Profile({
               width={400}
               height={400}
               className="absolute top-0 left-0"
-              rootColor={skin.rootColor}
+              rootcolor={skin.rootcolor}
             />
           )}
           {showBody && body && (
@@ -114,7 +114,7 @@ export default async function Profile({
               width={400}
               height={400}
               className="absolute top-0 left-0"
-              rootColor={body.rootColor}
+              rootcolor={body.rootcolor}
             />
           )}
           {showAffection && affection && (
@@ -123,15 +123,15 @@ export default async function Profile({
               width={400}
               height={400}
               className="absolute top-0 left-0"
-              rootColor={affection.rootColor}
-              gradientColor={skin.rootColor}
+              rootcolor={affection.rootcolor}
+              gradientcolor={skin.rootcolor}
             />
           )}
           {showHair && hair && !showHat && (
             <Hair
               id={"hair" + hair.id}
-              rootColor={hair.rootColor}
-              gradientColor={skin.rootColor}
+              rootcolor={hair.rootcolor}
+              gradientcolor={skin.rootcolor}
               width={400}
               height={400}
               className="absolute top-0 left-0"
@@ -142,8 +142,8 @@ export default async function Profile({
               id={"moustache" + moustache.id}
               width={400}
               height={400}
-              rootColor={moustache.rootColor}
-              gradientColor={skin.rootColor}
+              rootcolor={moustache.rootcolor}
+              gradientcolor={skin.rootcolor}
               className="absolute top-0 left-0"
             />
           )}
@@ -153,7 +153,7 @@ export default async function Profile({
               width={400}
               height={400}
               className="absolute top-0 left-0"
-              rootColor={skin.rootColor}
+              rootcolor={skin.rootcolor}
             />
           )}
           {showAdornment && adornment && (
@@ -162,7 +162,7 @@ export default async function Profile({
               width={400}
               height={400}
               className="absolute top-0 left-0"
-              rootColor={adornment.rootColor}
+              rootcolor={adornment.rootcolor}
             />
           )}
           {showHat && hat && (
@@ -171,7 +171,7 @@ export default async function Profile({
               width={400}
               height={400}
               className="absolute top-0 left-0"
-              rootColor={hat.rootColor}
+              rootcolor={hat.rootcolor}
             />
           )}
         </Box>

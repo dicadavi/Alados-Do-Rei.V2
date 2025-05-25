@@ -33,7 +33,7 @@ const adornments: Record<string, AvatarPart> = {
 };
 
 export const Adornment: AvatarPart = (props) => {
-  const { id, rootColor, ...rest } = props;
+  const { id, rootcolor, ...rest } = props;
   const AdornmentComponent = adornments[id] || adornments.default;
-  return <AdornmentComponent id={id} rootColor={rootColor} {...rest} />;
+  return <AdornmentComponent id={id} rootcolor={rootcolor} {...rest} />;
 };
