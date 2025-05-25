@@ -1,5 +1,4 @@
 import * as React from "react";
-import PageDefault from "@/components/layout/PageDefault";
 import { Box } from "@mui/material";
 import {
   Affection,
@@ -69,6 +68,8 @@ interface ProfileProps {
   showNose?: boolean;
   showAdornment?: boolean;
   showHat?: boolean;
+  width?: number;
+  height?: number;
 }
 
 export default async function Profile({
@@ -88,94 +89,94 @@ export default async function Profile({
   showNose = true,
   showAdornment = true,
   showHat = true,
+  width = 400,
+  height = 400,
 }: ProfileProps) {
   return (
-    <PageDefault>
-      <Box>
-        <Box
-          sx={{
-            position: "relative",
-            width: "100px",
-            height: "100px",
-          }}
-        >
-          {showSkin && skin && (
-            <Skin
-              id={"skin" + body?.id}
-              width={400}
-              height={400}
-              className="absolute top-0 left-0"
-              rootcolor={skin.rootcolor}
-            />
-          )}
-          {showBody && body && (
-            <Body
-              id={"body" + body.id}
-              width={400}
-              height={400}
-              className="absolute top-0 left-0"
-              rootcolor={body.rootcolor}
-            />
-          )}
-          {showAffection && affection && (
-            <Affection
-              id={"affection" + affection.id}
-              width={400}
-              height={400}
-              className="absolute top-0 left-0"
-              rootcolor={affection.rootcolor}
-              gradientcolor={skin.rootcolor}
-            />
-          )}
-          {showHair && hair && !showHat && (
-            <Hair
-              id={"hair" + hair.id}
-              rootcolor={hair.rootcolor}
-              gradientcolor={skin.rootcolor}
-              width={400}
-              height={400}
-              className="absolute top-0 left-0"
-            />
-          )}
-          {showMoustache && moustache && (
-            <Moustache
-              id={"moustache" + moustache.id}
-              width={400}
-              height={400}
-              rootcolor={moustache.rootcolor}
-              gradientcolor={skin.rootcolor}
-              className="absolute top-0 left-0"
-            />
-          )}
-          {showNose && nose && (
-            <Nose
-              id={"nose" + nose.id}
-              width={400}
-              height={400}
-              className="absolute top-0 left-0"
-              rootcolor={skin.rootcolor}
-            />
-          )}
-          {showAdornment && adornment && (
-            <Adornment
-              id={"adornment" + adornment.id}
-              width={400}
-              height={400}
-              className="absolute top-0 left-0"
-              rootcolor={adornment.rootcolor}
-            />
-          )}
-          {showHat && hat && (
-            <Hat
-              id={"hat" + hat.id}
-              width={400}
-              height={400}
-              className="absolute top-0 left-0"
-              rootcolor={hat.rootcolor}
-            />
-          )}
-        </Box>
+    <Box>
+      <Box
+        sx={{
+          position: "relative",
+          width: "100px",
+          height: "100px",
+        }}
+      >
+        {showSkin && skin && (
+          <Skin
+            id={"skin" + body?.id}
+            width={width}
+            height={height}
+            className="absolute top-0 left-0"
+            rootcolor={skin.rootcolor}
+          />
+        )}
+        {showBody && body && (
+          <Body
+            id={"body" + body.id}
+            width={width}
+            height={height}
+            className="absolute top-0 left-0"
+            rootcolor={body.rootcolor}
+          />
+        )}
+        {showAffection && affection && (
+          <Affection
+            id={"affection" + affection.id}
+            width={width}
+            height={height}
+            className="absolute top-0 left-0"
+            rootcolor={affection.rootcolor}
+            gradientcolor={skin.rootcolor}
+          />
+        )}
+        {showHair && hair && !showHat && (
+          <Hair
+            id={"hair" + hair.id}
+            rootcolor={hair.rootcolor}
+            gradientcolor={skin.rootcolor}
+            width={width}
+            height={height}
+            className="absolute top-0 left-0"
+          />
+        )}
+        {showMoustache && moustache && (
+          <Moustache
+            id={"moustache" + moustache.id}
+            width={width}
+            height={height}
+            rootcolor={moustache.rootcolor}
+            gradientcolor={skin.rootcolor}
+            className="absolute top-0 left-0"
+          />
+        )}
+        {showNose && nose && (
+          <Nose
+            id={"nose" + nose.id}
+            width={width}
+            height={height}
+            className="absolute top-0 left-0"
+            rootcolor={skin.rootcolor}
+          />
+        )}
+        {showAdornment && adornment && (
+          <Adornment
+            id={"adornment" + adornment.id}
+            width={width}
+            height={height}
+            className="absolute top-0 left-0"
+            rootcolor={adornment.rootcolor}
+          />
+        )}
+        {showHat && hat && (
+          <Hat
+            id={"hat" + hat.id}
+            width={width}
+            height={height}
+            className="absolute top-0 left-0"
+            rootcolor={hat.rootcolor}
+          />
+        )}
       </Box>
-    </PageDefault>
+    </Box>
   );
 }
