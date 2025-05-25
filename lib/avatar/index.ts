@@ -1,4 +1,5 @@
 export { Skin } from "./categories/skin";
+export { BackGroud } from "./categories/backgroud";
 export { Body } from "./categories/body";
 export { Hat } from "./categories/hat";
 export { Affection } from "./categories/affection";

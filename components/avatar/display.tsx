@@ -9,6 +9,7 @@ import {
   Moustache,
   Skin,
   Nose,
+  BackGroud,
 } from "@/lib/avatar";
 
 // Definindo as tipagens para as props de cada componente
@@ -16,9 +17,12 @@ interface SkinProps {
   rootcolor: string;
 }
 
+interface BackGroudProps {
+  rootcolor: string;
+}
+
 interface BodyProps {
   id: string;
-  rootcolor: string;
 }
 
 interface AffectionProps {
@@ -60,6 +64,7 @@ interface ProfileProps {
   nose: NoseProps;
   adornment?: AdornmentProps;
   hat?: HatProps;
+  backgroud?: BackGroudProps;
   showSkin?: boolean;
   showBody?: boolean;
   showAffection?: boolean;
@@ -72,7 +77,7 @@ interface ProfileProps {
   height?: number;
 }
 
-export default async function Profile({
+export default function Profile({
   skin,
   body,
   affection,
@@ -81,6 +86,7 @@ export default async function Profile({
   nose,
   adornment,
   hat,
+  backgroud,
   showSkin = true,
   showBody = true,
   showAffection = true,
@@ -89,18 +95,37 @@ export default async function Profile({
   showNose = true,
   showAdornment = true,
   showHat = true,
-  width = 400,
-  height = 400,
+  width,
+  height,
 }: ProfileProps) {
   return (
-    <Box>
+    <Box
+      width={width ? `${width}px` : "100%"}
+      height={height ? `${height}px` : "100%"}
+      position="relative"
+    >
       <Box
         sx={{
           position: "relative",
-          width: "100px",
-          height: "100px",
+          width: "100%",
+          height: "100%",
+          "& > *": {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+          },
         }}
       >
+        <BackGroud
+          id={"backgroud1"}
+          width={width}
+          height={height}
+          className="absolute top-0 left-0"
+          style={{ backgroundColor: backgroud?.rootcolor || "#c6fde7" }}
+          rootcolor={backgroud?.rootcolor || "#c6fde7"}
+        />
         {showSkin && skin && (
           <Skin
             id={"skin" + body?.id}
@@ -116,7 +141,7 @@ export default async function Profile({
             width={width}
             height={height}
             className="absolute top-0 left-0"
-            rootcolor={body.rootcolor}
+            rootcolor={skin.rootcolor}
           />
         )}
         {showAffection && affection && (

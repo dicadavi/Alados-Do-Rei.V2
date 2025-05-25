@@ -4,8 +4,10 @@ import React from "react";
 
 export default function PageDefault({
   children,
+  props,
 }: {
   children: React.ReactNode;
+  props?: React.CSSProperties;
 }) {
   const theme = useTheme(); // Usando o tema do contexto global
 
@@ -13,6 +15,7 @@ export default function PageDefault({
     <CardContent
       sx={{
         backgroundColor: theme.palette.mode === "light" ? "#fbfcfe" : "#0f1619",
+        ...props,
       }}
     >
       {children}
