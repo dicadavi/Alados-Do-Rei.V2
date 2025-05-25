@@ -19,6 +19,7 @@ interface SkinProps {
 
 interface BackGroudProps {
   rootcolor: string;
+  props?: React.CSSProperties;
 }
 
 interface BodyProps {
@@ -119,12 +120,14 @@ export default function Profile({
         }}
       >
         <BackGroud
-          id={"backgroud1"}
           width={width}
           height={height}
+          id={"backgroud1"}
           className="absolute top-0 left-0"
-          style={{ backgroundColor: backgroud?.rootcolor || "#c6fde7" }}
           rootcolor={backgroud?.rootcolor || "#c6fde7"}
+          style={{
+            ...backgroud?.props,
+          }}
         />
         {showSkin && skin && (
           <Skin

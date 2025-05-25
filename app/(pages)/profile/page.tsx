@@ -11,9 +11,19 @@ export default function ProfilePage() {
   const [color, setColor] = useState("#6f3f3c");
 
   return (
-    <PageDefault props={{ border: "2px solid orange" }}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6} style={{ border: "2px solid green" }}>
+    <PageDefault>
+      <Grid container spacing={0} marginTop="100px">
+        <Grid
+          item
+          xs={12}
+          md={6}
+          style={{
+            borderTopLeftRadius: "12px",
+            borderBottomLeftRadius: "12px",
+            border: "2px solid #424c50",
+            borderRight: "none", //TODO: Quando a tela for menor tem que poder ter borda direita
+          }}
+        >
           <Profile
             height={300}
             skin={{ rootcolor: color }}
@@ -32,10 +42,29 @@ export default function ProfilePage() {
             showNose={true}
             showAdornment={true}
             showHat={true}
-            backgroud={{ rootcolor: "#c6fde7" }}
+            backgroud={{
+              rootcolor: "#c6fde7",
+              props: {
+                borderTopLeftRadius: "10px",
+                borderBottomLeftRadius: "10px",
+                borderRight: "none",
+                backgroundColor: "#c6fde7",
+              },
+            }}
           />
         </Grid>
-        <Grid item xs={12} md={6} style={{ border: "2px solid blue" }}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          style={{
+            borderTopRightRadius: "12px",
+            borderBottomRightRadius: "12px",
+            border: "2px solid #424c50",
+            borderLeft: "none",
+            padding: "20px 0 0 20px",
+          }}
+        >
           <ColorToolbar onColorSelect={setColor} />
         </Grid>
       </Grid>

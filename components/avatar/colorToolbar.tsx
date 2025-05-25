@@ -51,15 +51,28 @@ const ColorToolbar: React.FC<{ onColorSelect: (color: string) => void }> = ({
       {colors.map((color) => (
         <div
           key={color}
-          onClick={() => handleColorClick(color)}
           style={{
-            width: "50px",
-            height: "50px",
-            backgroundColor: color,
-            border: selectedColor === color ? "2px solid black" : "none",
+            border:
+              selectedColor === color
+                ? "2px solid #3f85a7"
+                : "2px solid #424c50",
             cursor: "pointer",
+            backgroundColor:
+              selectedColor === color ? "#202f36" : "transparent",
+            borderRadius: "10px",
+            padding: "4px",
           }}
-        />
+        >
+          <div
+            onClick={() => handleColorClick(color)}
+            style={{
+              width: "30px",
+              height: "30px",
+              backgroundColor: color,
+              borderRadius: "10px",
+            }}
+          />
+        </div>
       ))}
     </div>
   );
