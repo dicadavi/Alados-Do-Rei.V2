@@ -42,13 +42,13 @@ const CategoryToolbar: React.FC<{
         textColor="primary"
         variant="scrollable"
         // scrollButtons="auto"
+        sx={{
+          borderBottom: "2px solid #424c50",
+        }}
       >
         {categories.map((category, index) => (
           <Tooltip title={category.label} key={category.id}>
             <Tab
-              style={{
-                borderBottom: "2px solid #424c50",
-              }}
               label={Category({
                 id: category.id,
                 rootcolor:
