@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box } from "@mui/material";
+import { Box, SxProps } from "@mui/material";
 import {
   Affection,
   Body,
@@ -19,7 +19,7 @@ interface SkinProps {
 
 interface BackGroudProps {
   rootcolor: string;
-  props?: React.CSSProperties;
+  props?: SxProps;
 }
 
 interface BodyProps {
@@ -125,6 +125,9 @@ export default function Profile({
           id={"backgroud1"}
           className="absolute top-0 left-0"
           rootcolor={backgroud?.rootcolor || "#c6fde7"}
+          sx={{
+            ...backgroud?.props,
+          }}
           style={{
             ...backgroud?.props,
           }}

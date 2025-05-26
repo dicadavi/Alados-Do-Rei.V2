@@ -7,4 +7,5 @@ export { Adornment } from "./categories/adornment";
 export { Hair } from "./categories/hair";
 export { Moustache } from "./categories/moustache";
 export { Nose } from "./categories/nose";
+export { Category } from "./categories/category";
 export type { AvatarPartProps, AvatarPart } from "./types";

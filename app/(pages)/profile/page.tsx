@@ -4,11 +4,13 @@ import * as React from "react";
 import { useState } from "react";
 import Profile from "@/components/avatar/display";
 import ColorToolbar from "@/components/avatar/colorToolbar";
+import CategoryToolbar from "@/components/avatar/categoryToolbar";
 import { Grid } from "@mui/material";
 import PageDefault from "@/components/layout/PageDefault";
 
 export default function ProfilePage() {
   const [color, setColor] = useState("#6f3f3c");
+  const [category, setCategory] = useState("body"); //TODO: Criar opções de cores com base na categoria
 
   return (
     <PageDefault>
@@ -17,11 +19,13 @@ export default function ProfilePage() {
           item
           xs={12}
           md={6}
-          style={{
+          sx={{
             borderTopLeftRadius: "12px",
             borderBottomLeftRadius: "12px",
             border: "2px solid #424c50",
-            borderRight: "none", //TODO: Quando a tela for menor tem que poder ter borda direita
+            borderRight: { xs: "2px solid #424c50", md: "none" },
+            borderTopRightRadius: { xs: "12px", md: "0" },
+            borderBottomRightRadius: { xs: "12px", md: "0" },
           }}
         >
           <Profile
@@ -47,7 +51,8 @@ export default function ProfilePage() {
               props: {
                 borderTopLeftRadius: "10px",
                 borderBottomLeftRadius: "10px",
-                borderRight: "none",
+                borderTopRightRadius: { xs: "10px", md: "0" },
+                borderBottomRightRadius: { xs: "10px", md: "0" },
                 backgroundColor: "#c6fde7",
               },
             }}
@@ -57,14 +62,18 @@ export default function ProfilePage() {
           item
           xs={12}
           md={6}
-          style={{
+          sx={{
             borderTopRightRadius: "12px",
             borderBottomRightRadius: "12px",
             border: "2px solid #424c50",
-            borderLeft: "none",
-            padding: "20px 0 0 20px",
+            borderLeft: { xs: "2px solid #424c50", md: "none" },
+            borderTopLeftRadius: { xs: "12px", md: "0" },
+            borderBottomLeftRadius: { xs: "12px", md: "0" },
+            marginTop: { xs: "20px", md: "0" },
+            padding: { xs: "0 0 20px 0", md: "0" },
           }}
         >
+          <CategoryToolbar onCategorySelect={setCategory} />
           <ColorToolbar onColorSelect={setColor} />
         </Grid>
       </Grid>

@@ -46,6 +46,8 @@ const ColorToolbar: React.FC<{ onColorSelect: (color: string) => void }> = ({
         justifyContent: "flex-start",
         flexWrap: "wrap",
         flexDirection: "row",
+        marginLeft: "10px",
+        marginTop: "10px",
       }}
     >
       {colors.map((color) => (
