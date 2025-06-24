@@ -156,11 +156,11 @@ const getDesignTokens = (mode: PaletteMode) => ({
     background: {
       default: "#fff",
       paper: gray[50],
-      gradient : "linear-gradient(180deg, #4fa3d7 0%, #88bbef66 55%);",
+      gradient : "linear-gradient(180deg, #027efd40, #02294F );",
       ...(mode === "dark" && { default: gray[900], paper: gray[800], gradient: "linear-gradient(#02294F, #090E10)" }),
     },
     boxList: { //Boxes do ranking
-      default: "#f6f1ef59",
+      default: "#f6f1ef9c",
       ...(mode === "dark" && { default: "#090e1059"}),
     },
     text: {

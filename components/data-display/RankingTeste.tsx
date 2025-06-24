@@ -14,6 +14,7 @@ import {
   ListItemAvatar,
   Chip,
   useTheme,
+  Divider,
 } from "@mui/material";
 
 interface RankingItem {
@@ -53,6 +54,8 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
         width: "100%",
         maxWidth: { xs: "100%", sm: 500, md: 600 }, // Responsivo para diferentes telas 
         marginTop: "5px",
+        marginRight: "auto",
+        marginLeft: "auto",
         p: 2,
         background: theme.palette.background.gradient, //Conteiner externo do ranking
         borderRadius: 2, 
@@ -71,13 +74,18 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
         sx={{
           fontWeight: "bold",
           textAlign: "center",
-          mb: 4,
+          mb: 3,
           color: theme.palette.text.primary,
         }}
       >
         🏆 Ranking de Pontuação
       </Typography>
-
+      <Divider />
+      <Box sx={{
+        width: "100%",
+        maxWidth: { xs: "100%", sm: 500, md: 600 },
+        marginBottom: 2,
+      }} />
       <List dense>
         {items.map((item, index) => (
           <div key={item.rank}>
@@ -87,9 +95,9 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                 display: "flex",
                 alignItems: "center",
                 paddingLeft: 0,
-                backgroundColor: theme.palette.boxList.default, // cor do conteiner com cada item da lista
-                borderRadius: 2,
-                boxShadow: theme.shadows[1],
+                backgroundColor: 'transparent', //theme.palette.boxList.default,  cor do conteiner com cada item da lista
+                /*borderRadius: 2,
+                boxShadow: theme.shadows[1],*/
                 transition: "background-color 0.3s ease",
               }}
             >
@@ -202,11 +210,11 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  my: 3,
+                  my: "5px",
                   py: 1,
-                  backgroundColor: theme.palette.primary.dark,
-                  borderRadius: 2,
-                  boxShadow: theme.shadows[2],
+                  backgroundColor: 'transparent', //theme.palette.primary.dark,
+                  /*borderRadius: 2,
+                  boxShadow: theme.shadows[2],*/
                 }}
               >
                 <Image
