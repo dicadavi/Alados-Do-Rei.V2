@@ -30,12 +30,12 @@ const CategoryToolbar: React.FC<CategoryToolbarProps> = ({
     label: string;
     rootcolor: string;
   }> = [
-    { id: "body", label: "Pele", rootcolor: "#52656D" },
-    { id: "clothes", label: "Corpo", rootcolor: "#52656D" },
-    { id: "affection", label: "Afeição", rootcolor: "#52656D" },
-    { id: "moustache", label: "Barba", rootcolor: "#52656D" },
+    { id: "body", label: "Corpo", rootcolor: "#52656D" },
+    { id: "clothes", label: "Roupa", rootcolor: "#52656D" },
+    { id: "affection", label: "Expressão	", rootcolor: "#52656D" },
+    { id: "moustache", label: "Barba ou Bigode", rootcolor: "#52656D" },
     { id: "hair", label: "Cabelo", rootcolor: "#52656D" },
-    { id: "adornment", label: "Adereços", rootcolor: "#52656D" },
+    { id: "adornment", label: "Acessórios", rootcolor: "#52656D" },
     { id: "hat", label: "Chapéu", rootcolor: "#52656D" },
     { id: "backgroud", label: "Fundo", rootcolor: "#52656D" },
   ];

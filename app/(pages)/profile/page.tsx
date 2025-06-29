@@ -5,7 +5,8 @@ import { useState } from "react";
 import Profile from "@/components/avatar/display";
 import ColorToolbar from "@/components/avatar/colorToolbar";
 import CategoryToolbar from "@/components/avatar/categoryToolbar";
-import { Grid } from "@mui/material";
+import CategorySelector from "@/components/avatar/categorySelector";
+import { Grid, Box } from "@mui/material";
 import PageDefault from "@/components/layout/PageDefault";
 
 // Definindo o tipo para as cores por categoria
@@ -21,6 +22,23 @@ interface CategoryColors {
   backgroud: string;
 }
 
+// Definindo o tipo para os tipos selecionados de cada categoria
+interface SelectedTypes {
+  body: string;
+  hair: string;
+  hat: string;
+  affection: string;
+  moustache: string;
+  adornment: string;
+}
+
+// Definindo o tipo para controlar a visibilidade dos elementos opcionais
+interface ElementVisibility {
+  moustache: boolean;
+  hat: boolean;
+  adornment: boolean;
+}
+
 export default function ProfilePage() {
   // Estado com cores específicas para cada categoria
   const [categoryColors, setCategoryColors] = useState<CategoryColors>({
@@ -34,6 +52,25 @@ export default function ProfilePage() {
     hat: "#249472",
     backgroud: "#c6fde7",
   });
+
+  // Estado com tipos selecionados para cada categoria
+  const [selectedTypes, setSelectedTypes] = useState<SelectedTypes>({
+    body: "4",
+    hair: "72",
+    hat: "3",
+    affection: "23",
+    moustache: "6",
+    adornment: "1",
+  });
+
+  // Estado para controlar a visibilidade dos elementos opcionais
+  const [elementVisibility, setElementVisibility] = useState<ElementVisibility>(
+    {
+      moustache: false, // Começar sem bigode
+      hat: true, // Começar com chapéu
+      adornment: true, // Começar com adereços
+    }
+  );
 
   const [category, setCategory] = useState<keyof CategoryColors>("body");
 
@@ -54,6 +91,43 @@ export default function ProfilePage() {
     });
   };
 
+  // Função para atualizar o tipo selecionado de uma categoria
+  const handleTypeSelect = (
+    categoryType: keyof SelectedTypes,
+    typeId: string
+  ) => {
+    // Se selecionou "sem" (typeId === "0"), ocultar o elemento
+    if (typeId === "0") {
+      if (
+        categoryType === "moustache" ||
+        categoryType === "hat" ||
+        categoryType === "adornment"
+      ) {
+        setElementVisibility((prev) => ({
+          ...prev,
+          [categoryType]: false,
+        }));
+      }
+    } else {
+      // Se selecionou um tipo válido, mostrar o elemento
+      if (
+        categoryType === "moustache" ||
+        categoryType === "hat" ||
+        categoryType === "adornment"
+      ) {
+        setElementVisibility((prev) => ({
+          ...prev,
+          [categoryType]: true,
+        }));
+      }
+
+      setSelectedTypes((prev) => ({
+        ...prev,
+        [categoryType]: typeId,
+      }));
+    }
+  };
+
   return (
     <PageDefault>
       <Grid container spacing={0} marginTop="100px">
@@ -71,23 +145,23 @@ export default function ProfilePage() {
           }}
         >
           <Profile
-            height={300}
+            height={500}
             categoryColors={categoryColors}
-            body={{ id: "6" }}
-            affection={{ id: "23" }}
-            moustache={{ id: "6" }}
-            hair={{ id: "72" }}
+            body={{ id: selectedTypes.body }}
+            affection={{ id: selectedTypes.affection }}
+            moustache={{ id: selectedTypes.moustache }}
+            hair={{ id: selectedTypes.hair }}
             nose={{ id: "1" }}
-            adornment={{ id: "1" }}
-            hat={{ id: "3" }}
+            adornment={{ id: selectedTypes.adornment }}
+            hat={{ id: selectedTypes.hat }}
             showSkin={true}
             showBody={true}
             showAffection={true}
-            showMoustache={false}
+            showMoustache={elementVisibility.moustache}
             showHair={true}
             showNose={true}
-            showAdornment={true}
-            showHat={true}
+            showAdornment={elementVisibility.adornment}
+            showHat={elementVisibility.hat}
             backgroud={{
               props: {
                 borderTopLeftRadius: "10px",
@@ -112,14 +186,30 @@ export default function ProfilePage() {
             borderBottomLeftRadius: { xs: "12px", md: "0" },
             marginTop: { xs: "20px", md: "0" },
             padding: { xs: "0 0 20px 0", md: "0" },
+            maxHeight: "500px",
+            overflowY: "auto",
           }}
         >
+          {/* Seletor de Categoria */}
           <CategoryToolbar onCategorySelect={setCategory} />
+
+          {/* Seletor de Cores */}
           <ColorToolbar
             onColorSelect={handleColorSelect}
             selectedCategory={category}
             currentColor={categoryColors[category]}
           />
+
+          {/* Seletor de Tipos - baseado na categoria atual */}
+          <Box sx={{ padding: "10px" }}>
+            <CategorySelector
+              selectedTypes={selectedTypes}
+              onTypeSelect={handleTypeSelect}
+              categoryColors={categoryColors}
+              currentCategory={category}
+              elementVisibility={elementVisibility}
+            />
+          </Box>
         </Grid>
       </Grid>
     </PageDefault>
