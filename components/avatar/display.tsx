@@ -12,13 +12,21 @@ import {
   BackGroud,
 } from "@/lib/avatar";
 
-// Definindo as tipagens para as props de cada componente
-interface SkinProps {
-  rootcolor: string;
+// Definindo o tipo para as cores por categoria
+interface CategoryColors {
+  body: string; // Categoria "Pele" - controla a cor da skin
+  clothes: string; // Categoria "Corpo" - controla a cor do body
+  skin: string; // Mantém para gradientes e outras funcionalidades
+  affection: string;
+  moustache: string;
+  hair: string;
+  adornment: string;
+  hat: string;
+  backgroud: string;
 }
 
+// Definindo as tipagens para as props de cada componente
 interface BackGroudProps {
-  rootcolor: string;
   props?: SxProps;
 }
 
@@ -28,17 +36,14 @@ interface BodyProps {
 
 interface AffectionProps {
   id: string;
-  rootcolor: string;
 }
 
 interface MoustacheProps {
   id: string;
-  rootcolor: string;
 }
 
 interface HairProps {
   id: string;
-  rootcolor: string;
 }
 
 interface NoseProps {
@@ -47,17 +52,15 @@ interface NoseProps {
 
 interface AdornmentProps {
   id: string;
-  rootcolor: string;
 }
 
 interface HatProps {
   id: string;
-  rootcolor: string;
 }
 
 // Atualizando a interface ProfileProps
 interface ProfileProps {
-  skin: SkinProps;
+  categoryColors: CategoryColors;
   body: BodyProps;
   affection?: AffectionProps;
   moustache?: MoustacheProps;
@@ -79,7 +82,7 @@ interface ProfileProps {
 }
 
 export default function Profile({
-  skin,
+  categoryColors,
   body,
   affection,
   moustache,
@@ -124,7 +127,7 @@ export default function Profile({
           height={height}
           id={"backgroud1"}
           className="absolute top-0 left-0"
-          rootcolor={backgroud?.rootcolor || "#c6fde7"}
+          rootcolor={categoryColors.backgroud}
           sx={{
             ...backgroud?.props,
           }}
@@ -132,13 +135,13 @@ export default function Profile({
             ...backgroud?.props,
           }}
         />
-        {showSkin && skin && (
+        {showSkin && (
           <Skin
             id={"skin" + body?.id}
             width={width}
             height={height}
             className="absolute top-0 left-0"
-            rootcolor={skin.rootcolor}
+            rootcolor={categoryColors.skin}
           />
         )}
         {showBody && body && (
@@ -147,7 +150,7 @@ export default function Profile({
             width={width}
             height={height}
             className="absolute top-0 left-0"
-            rootcolor={skin.rootcolor}
+            rootcolor={categoryColors.clothes}
           />
         )}
         {showAffection && affection && (
@@ -156,15 +159,15 @@ export default function Profile({
             width={width}
             height={height}
             className="absolute top-0 left-0"
-            rootcolor={affection.rootcolor}
-            gradientcolor={skin.rootcolor}
+            rootcolor={categoryColors.affection}
+            gradientcolor={categoryColors.skin}
           />
         )}
         {showHair && hair && !showHat && (
           <Hair
             id={"hair" + hair.id}
-            rootcolor={hair.rootcolor}
-            gradientcolor={skin.rootcolor}
+            rootcolor={categoryColors.hair}
+            gradientcolor={categoryColors.skin}
             width={width}
             height={height}
             className="absolute top-0 left-0"
@@ -175,8 +178,8 @@ export default function Profile({
             id={"moustache" + moustache.id}
             width={width}
             height={height}
-            rootcolor={moustache.rootcolor}
-            gradientcolor={skin.rootcolor}
+            rootcolor={categoryColors.moustache}
+            gradientcolor={categoryColors.skin}
             className="absolute top-0 left-0"
           />
         )}
@@ -186,7 +189,7 @@ export default function Profile({
             width={width}
             height={height}
             className="absolute top-0 left-0"
-            rootcolor={skin.rootcolor}
+            rootcolor={categoryColors.skin}
           />
         )}
         {showAdornment && adornment && (
@@ -195,7 +198,7 @@ export default function Profile({
             width={width}
             height={height}
             className="absolute top-0 left-0"
-            rootcolor={adornment.rootcolor}
+            rootcolor={categoryColors.adornment}
           />
         )}
         {showHat && hat && (
@@ -204,7 +207,7 @@ export default function Profile({
             width={width}
             height={height}
             className="absolute top-0 left-0"
-            rootcolor={hat.rootcolor}
+            rootcolor={categoryColors.hat}
           />
         )}
       </Box>
