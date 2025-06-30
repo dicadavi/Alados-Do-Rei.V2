@@ -23,7 +23,6 @@ function SvgComponent(props) {
         height={685}
         viewBox="-13.437 0 526.437 685"
         fill="none"
-        style={{ zIndex: -1 }}
         {...props}
       >
         <path

@@ -144,6 +144,16 @@ export default function Profile({
             rootcolor={categoryColors.skin}
           />
         )}
+        {showHair && hair && !showHat && (
+          <Hair
+            id={"hair" + hair.id}
+            rootcolor={categoryColors.hair}
+            gradientcolor={categoryColors.skin}
+            width={width}
+            height={height}
+            className="absolute top-0 left-0"
+          />
+        )}
         {showBody && body && (
           <Body
             id={"body" + body.id}
@@ -161,16 +171,6 @@ export default function Profile({
             className="absolute top-0 left-0"
             rootcolor={categoryColors.affection}
             gradientcolor={categoryColors.skin}
-          />
-        )}
-        {showHair && hair && !showHat && (
-          <Hair
-            id={"hair" + hair.id}
-            rootcolor={categoryColors.hair}
-            gradientcolor={categoryColors.skin}
-            width={width}
-            height={height}
-            className="absolute top-0 left-0"
           />
         )}
         {showMoustache && moustache && (

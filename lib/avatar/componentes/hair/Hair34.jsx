@@ -23,7 +23,6 @@ function SvgComponent(props) {
         height={685}
         viewBox="-14.437 0 526.437 685"
         fill="none"
-        style={{ zIndex: -1 }}
         transform="translate(0, -1)"
         {...props}
       >

@@ -23,7 +23,7 @@ function SvgComponent(props) {
         xmlns="http://www.w3.org/2000/svg"
         height={685}
         viewBox="-14 0 510 685"
-        style={{ position: "relative", zIndex: -1 }}
+        style={{ position: "relative" }}
         fill="none"
         {...props}
       >
