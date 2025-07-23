@@ -132,7 +132,7 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
                       fontWeight: 700,
                       fontSize: "1.2rem",
                       color:
-                        item.rank >= 4 && item.rank <= 10
+                        item.rank >= 4 && item.rank <= 5
                           ? theme.palette.primary.main
                           : theme.palette.text.primary,
                     }}
@@ -204,7 +204,7 @@ export default function RankingTeste({ items }: { items: RankingItem[] }) {
             </ListItem>
 
             {/* Zona de Conduta com <Image> otimizado */}
-            {index === 9 && (
+            {index === 4 && (
               <Box
                 sx={{
                   display: "flex",
